@@ -1,0 +1,1601 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1561\cocoasubrtf400
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 Windows PowerShell\
+Copyright (C) Microsoft Corporation. All rights reserved.\
+\
+PS C:\\Users\\ID> Write-Host "Jo\'e3o Marques  V1.0 ^I^I^I^I^I^I^I06-04-2018" -ForegroundColor Black -BackgroundColor Yellow\
+>> Write ""\
+>> Write-Host "Fun\'e7\'e3o: Recolher dados de uma Maquina:\
+>> ^I^I-Dados de Rede^I^I^I^I^I^I^IPassos :\
+>> ^I^I-Dados de Hardware\
+>>  ^I^I-Dados de Software:^I^I^I^I^I^I1\'ba -> HOST INFORMATION\
+>> ^I^I^I\
+>> ^I^I^I.OS version;^I^I^I^I^I^I2\'ba -> GENERAL INFORMATION (KB / DHCP / )\
+>> ^I^I^I.Install date;\
+>> ^I^I^I.Service pack version;^I^I^I^I^I3\'ba -> INTERNET CONNECTION INFORMATION\
+>> ^I^I^I.OS architecture;^I^I^I^I^I^I\
+>> ^I^I^I.Boot device;^I^I^I^I^I^I4\'ba -> BASIC PC INFORMATION^I^I\
+>> ^I^I^I.Build number;^I^I^I^I^I^I^I\
+>> ^I^I^I.Host name;^I^I^I^I^I^I5\'ba -> DISK INFORMATION\
+>> ^I^I^I.Internet Explorer version;^I\
+>> ^I^I^I^I^I^I^I^I^I^I6\'aa -> PROGRAMS INSTALLED\
+>> ^I^I- Informa\'e7\'e3o dos Discos\
+>> ^I^I^I^I^I^I^I^I^I^I7\'aa -> USERS^I\
+>> ^I^I^I^I^I^I^I\
+>> ^I^I^I^I^I^I^I^I^I^I8\'ba -> BIOS INFORMATION " -ForegroundColor Black -BackgroundColor White\
+>> ^I\
+>> Write ""\
+>> Write ""\
+>>\
+>>\
+>> $loopDelayMilliseconds = 650\
+>> while($true)\
+>> \{\
+>>    $startTime = Get-Date\
+>> ^I^I\
+>>\
+>> ^I^I\
+>>    ^I^IWrite-Host "#######################>>>>>COMPUTER BEING ANALYZED<<<<<#######################" -ForegroundColor\
+Green\
+>> ^I^IWrite ""\
+>> ^I^IWrite ""\
+>> ^I^IWrite-Host "####################### HOST INFORMATION #########################"  -ForegroundColor Red -Background\
+Color Yellow\
+>>  ^I^IWrite ""\
+>> ^I^I\
+>> ^I^IGet-NetAdapter | select Name,Status, LinkSpeed\
+>>\
+>> ^I^IGet-NetAdapterStatistics\
+>> ^I^I\
+>> ^I^IStart-Sleep 1^I\
+>> ^I\
+>> ^I^IWrite ""\
+>> ^I^IWrite ""\
+>> ^I^IWrite-Host "####################### GENERAL INFORMATION (KB / DHCP / ) #######################" -ForegroundColor\
+Red -BackgroundColor Yellow\
+>> ^I^IWrite ""\
+>> ^I^ISysteminfo\
+>>\
+>> ^I^IStart-Sleep 1\
+>> ^I^I^I\
+>> ^I^IWrite ""\
+>> ^I^IWrite ""\
+>> ^I^IWrite-Host "####################### INTERNET CONNECTION INFORMATION ######################" -ForegroundColor Red\
+-BackgroundColor Yellow\
+>> ^I^IWrite ""\
+>>\
+>> ^I^IIpconfig\
+>> ^I^IStart-Sleep 1\
+>> ^I^I\
+>> ^I^IWrite ""\
+>> ^I^IWrite ""^I\
+>> ^I^IWrite-Host "####################### BASIC PC INFORMATION #######################" -ForegroundColor Red -Backgroun\
+dColor Yellow\
+>> ^I^IWrite ""\
+>>\
+>>   ^I^IWrite-Host -NoNewLine "OS Version: " -ForegroundColor Yellow -BackgroundColor DarkGreen\
+>>\
+>>   ^I^IGet-CimInstance Win32_OperatingSystem | Select-Object  Caption | ForEach\{ $_.Caption \}\
+>>\
+>> ^I^IWrite-Host ""\
+>> ^I^IWrite-Host -NoNewLine "Install Date: " -ForegroundColor Yellow -BackgroundColor DarkGreen\
+>>\
+>>   ^I^IGet-CimInstance Win32_OperatingSystem | Select-Object  InstallDate | ForEach\{ $_.InstallDate \}\
+>>\
+>>  ^I^IWrite-Host ""\
+>>\
+>>\
+>> ^I^IWrite-Host -NoNewLine "Service Pack Version: " -ForegroundColor Yellow -BackgroundColor DarkGreen\
+>>\
+>>   ^I^IGet-CimInstance Win32_OperatingSystem | Select-Object  ServicePackMajorVersion | ForEach\{ $_.ServicePackMajorVe\
+rsion \}\
+>>\
+>>   ^I^IWrite-Host ""\
+>>\
+>>\
+>> ^I^IWrite-Host -NoNewLine "OS Architecture: " -ForegroundColor Yellow -BackgroundColor DarkGreen\
+>>\
+>>   ^I^IGet-CimInstance Win32_OperatingSystem | Select-Object  OSArchitecture | ForEach\{ $_.OSArchitecture \}\
+>>\
+>>  ^I^IWrite-Host ""\
+>>\
+>>\
+>> ^I^IWrite-Host -NoNewLine "Boot Device: " -ForegroundColor Yellow -BackgroundColor DarkGreen\
+>>\
+>>   ^I^IGet-CimInstance Win32_OperatingSystem | Select-Object  BootDevice | ForEach\{ $_.BootDevice \}\
+>>\
+>>  ^I^IWrite-Host ""\
+>>\
+>>\
+>> ^I^IWrite-Host -NoNewLine "Build Number: " -ForegroundColor Yellow -BackgroundColor DarkGreen\
+>>\
+>>   ^I^IGet-CimInstance Win32_OperatingSystem | Select-Object  BuildNumber | ForEach\{ $_.BuildNumber \}\
+>>\
+>>   ^I^IWrite-Host ""\
+>>\
+>>\
+>> ^I^IWrite-Host -NoNewLine "Host Name: " -ForegroundColor Yellow -BackgroundColor DarkGreen\
+>>\
+>>  ^I^IGet-CimInstance Win32_OperatingSystem | Select-Object  CSName | ForEach\{ $_.CSName \}\
+>>\
+>>  ^I^IWrite-Host ""\
+>>\
+>> ^I^IStart-Sleep 1\
+>> ^I^I\
+>> ^I^IWrite ""\
+>> ^I^IWrite ""\
+>> ^I^IWrite-Host "####################### DISK INFORMATION #######################" -ForegroundColor Red -BackgroundCol\
+or Yellow\
+>> ^I^IWrite ""\
+>> ^I^I\
+>> ^I^IWrite-Host "Drive information for $env:ComputerName"\
+>>\
+>> ^I^IGet-WmiObject -Class Win32_LogicalDisk |\
+>>     ^I^I^IWhere-Object \{$_.DriveType -ne 5\} |\
+>>     ^I^I^ISort-Object -Property Name |\
+>>     ^I^I^ISelect-Object Name, VolumeName, VolumeSerialNumber,SerialNumber, FileSystem, Deion, VolumeDirty, `\
+>>         ^I^I^I@\{"Label"="DiskSize(GB)";"Expression"=\{"\{0:N\}" -f ($_.Size/1GB) -as [float]\}\}, `\
+>>         ^I^I^I@\{"Label"="FreeSpace(GB)";"Expression"=\{"\{0:N\}" -f ($_.FreeSpace/1GB) -as [float]\}\}, `\
+>>         ^I^I^I@\{"Label"="%Free";"Expression"=\{"\{0:N\}" -f ($_.FreeSpace/$_.Size*100) -as [float]\}\} |\
+>>     ^I^I^IFormat-Table -AutoSize\
+>> ^I^IGet-PhysicalDisk\
+>>\
+>> ^I^IStart-Sleep 1^I\
+>> ^I\
+>> ^I^IWrite ""\
+>> ^I^IWrite ""\
+>> ^I^IWrite-Host "####################### PROGRAMS INSTALLED #######################" -ForegroundColor Red -BackgroundC\
+olor Yellow\
+>> ^I^IWrite ""\
+>>\
+>> ^I^IStart-Sleep 7\
+>> ^I^I\
+>> ^I^IWrite ""\
+>> ^I^IWrite ""\
+>> ^I^IWrite-Host "####################### USERS #######################" -ForegroundColor Red -BackgroundColor Yellow^I\
+>> ^I^IWrite ""\
+>> ^I^IWrite ""\
+>> ^I^IGet-LocalUser\
+>> ^I^I\
+>> ^I^I\
+>> ^I^IStart-Sleep 1\
+>> ^I^I\
+>> ^I^IWrite ""\
+>> ^I^IWrite ""\
+>> ^I^IWrite-Host "####################### BIOS INFORMATION #######################" -ForegroundColor Red -BackgroundCol\
+or Yellow\
+>> ^I^IWrite ""\
+>> ^I^Iwmic bios get smbiosbiosversion\
+>> ^I^Isysteminfo | findstr /I /c:bios\
+>> ^I^I\
+>> ^I^I\
+>> ^I\
+>> ^Icmd /k\
+>>\
+>>    $endTime = Get-Date\
+>>    $loopLength = ($endTime - $startTime).TotalMilliseconds\
+>>    $timeRemaining = $loopDelayMilliseconds - $loopLength\
+>>\
+>>    if($timeRemaining -gt 0)\
+>>    \{\
+>>       Start-Sleep -Milliseconds $timeRemaining\
+>>    \}\
+>> \}\
+\
+Jo\'e3o Marques  V1.0                                                      06-04-2018\
+\
+Fun\'e7\'e3o: Recolher dados de uma Maquina:\
+                -Dados de Rede                                                  Passos :\
+                -Dados de Hardware\
+                -Dados de Software:                                             1\'ba -> HOST INFORMATION\
+\
+                        .OS version;                                            2\'ba -> GENERAL INFORMATION (KB / DHCP / )\
+                        .Install date;\
+                        .Service pack version;                                  3\'ba -> INTERNET CONNECTION INFORMATION\
+                        .OS architecture;\
+                        .Boot device;                                           4\'ba -> BASIC PC INFORMATION              \
+                        .Build number;\
+                        .Host name;                                             5\'ba -> DISK INFORMATION\
+                        .Internet Explorer version;\
+                                                                                6\'aa -> PROGRAMS INSTALLED\
+                - Informa\'e7\'e3o dos Discos\
+                                                                                7\'aa -> USERS\
+\
+                                                                                8\'ba -> BIOS INFORMATION\
+\
+\
+#######################>>>>>COMPUTER BEING ANALYZED<<<<<#######################\
+\
+\
+####################### HOST INFORMATION #########################\
+\
+\
+Name                        Status LinkSpeed\
+----                        ------ ---------\
+Ethernet                    Up     1 Gbps\
+vEthernet (Comutador Prede) Up     10 Gbps\
+Ethernet\
+vEthernet (Comutador Prede)\
+\
+\
+####################### GENERAL INFORMATION (KB / DHCP / ) #######################\
+\
+\
+Host Name:                 ID-I7PC\
+OS Name:                   Microsoft Windows 10 Pro\
+OS Version:                10.0.16299 N/A Build 16299\
+OS Manufacturer:           Microsoft Corporation\
+OS Configuration:          Standalone Workstation\
+OS Build Type:             Multiprocessor Free\
+Registered Owner:          ID\
+Registered Organization:\
+Product ID:                00330-71311-42117-AAOEM\
+Original Install Date:     11/12/2017, 15:28:53\
+System Boot Time:          18/04/2018, 17:13:30\
+System Manufacturer:       ASUS\
+System Model:              All Series\
+System Type:               x64-based PC\
+Processor(s):              1 Processor(s) Installed.\
+                           [01]: Intel64 Family 6 Model 60 Stepping 3 GenuineIntel ~3601 Mhz\
+BIOS Version:              American Megatrends Inc. 2602, 07/12/2015\
+Windows Directory:         C:\\WINDOWS\
+System Directory:          C:\\WINDOWS\\system32\
+Boot Device:               \\Device\\HarddiskVolume1\
+System Locale:             pt;Portugu\'eas (Portugal)\
+Input Locale:              pt;Portugu\'eas (Portugal)\
+Time Zone:                 (UTC+00:00) Dublin, Edimburgo, Lisboa, Londres\
+Total Physical Memory:     16\'a0261 MB\
+Available Physical Memory: 8\'a0313 MB\
+Virtual Memory: Max Size:  18\'a0693 MB\
+Virtual Memory: Available: 5\'a0386 MB\
+Virtual Memory: In Use:    13\'a0307 MB\
+Page File Location(s):     C:\\pagefile.sys\
+Domain:                    WORKGROUP\
+Logon Server:              \\\\ID-I7PC\
+Hotfix(s):                 12 Hotfix(s) Installed.\
+                           [01]: KB4048951\
+                           [02]: KB4053577\
+                           [03]: KB4054022\
+                           [04]: KB4056887\
+                           [05]: KB4058702\
+                           [06]: KB4074595\
+                           [07]: KB4087256\
+                           [08]: KB4088785\
+                           [09]: KB4090914\
+                           [10]: KB4093110\
+                           [11]: KB4099989\
+                           [12]: KB4093112\
+Network Card(s):           2 NIC(s) Installed.\
+                           [01]: Realtek PCIe GBE Family Controller\
+                                 Connection Name: Ethernet\
+                                 DHCP Enabled:    No\
+                                 IP address(es)\
+                                 [01]: 192.168.1.45\
+                                 [02]: fe80::34b1:78ba:b292:103e\
+                           [02]: Hyper-V Virtual Ethernet Adapter\
+                                 Connection Name: vEthernet (Comutador Prede)\
+                                 DHCP Enabled:    Yes\
+                                 DHCP Server:     255.255.255.255\
+                                 IP address(es)\
+                                 [01]: 172.23.245.65\
+                                 [02]: fe80::a0d3:aefa:7fd6:e377\
+Hyper-V Requirements:      VM Monitor Mode Extensions: Yes\
+                           Virtualization Enabled In Firmware: Yes\
+                           Second Level Address Translation: Yes\
+                           Data Execution Prevention Available: Yes\
+\
+\
+####################### INTERNET CONNECTION INFORMATION ######################\
+\
+\
+Windows IP Configuration\
+\
+\
+Ethernet adapter vEthernet (Comutador Prede):\
+\
+   Connection-specific DNS Suffix  . :\
+   Link-local IPv6 Address . . . . . : fe80::a0d3:aefa:7fd6:e377%7\
+   IPv4 Address. . . . . . . . . . . : 172.23.245.65\
+   Subnet Mask . . . . . . . . . . . : 255.255.255.240\
+   Default Gateway . . . . . . . . . :\
+\
+Ethernet adapter Ethernet:\
+\
+   Connection-specific DNS Suffix  . :\
+   Link-local IPv6 Address . . . . . : fe80::34b1:78ba:b292:103e%15\
+   IPv4 Address. . . . . . . . . . . : 192.168.1.45\
+   Subnet Mask . . . . . . . . . . . : 255.255.255.0\
+   Default Gateway . . . . . . . . . : 192.168.1.1\
+\
+\
+####################### BASIC PC INFORMATION #######################\
+\
+OS Version: Microsoft Windows 10 Pro\
+\
+Install Date:\
+\
+Service Pack Version: 0\
+\
+OS Architecture: 64 bits\
+\
+Boot Device: \\Device\\HarddiskVolume1\
+\
+Build Number: 16299\
+\
+Host Name: ID-I7PC\
+\
+\
+\
+####################### DISK INFORMATION #######################\
+\
+Drive information for ID-I7PC\
+\
+\
+\
+Name VolumeName VolumeSerialNumber SerialNumber FileSystem Deion VolumeDirty DiskSize(GB) FreeSpace(GB) %Free\
+---- ---------- ------------------ ------------ ---------- ----- ----------- ------------ ------------- -----\
+C:              5C084A2B                        NTFS                                22261          6064  2724\
+D:              A0D518A6                        NTFS             False              93151         79958  8584\
+Z:   Sistema    38F26F4E                        NTFS                                37090           326    88\
+\
+\
+\
+FriendlyName           SerialNumber     MediaType CanPool OperationalStatus HealthStatus Usage            Size\
+------------           ------------     --------- ------- ----------------- ------------ -----            ----\
+KINGSTON SV300S37A240G 50026B766502239E SSD       False   OK                Healthy      Auto-Select 223.57 GB\
+ST1000DM003-1SB102     W9A431PY         HDD       False   OK                Healthy      Auto-Select 931.51 GB\
+\
+\
+####################### PROGRAMS INSTALLED #######################\
+\
+\
+\
+####################### USERS #######################\
+\
+\
+\
+AccountExpires         :\
+Deion            : Conta incorporada para a administra\'e7\'e3o do computador/dom\'ednio\
+Enabled                : False\
+FullName               :\
+PasswordChangeableDate :\
+PasswordExpires        :\
+UserMayChangePassword  : True\
+PasswordRequired       : True\
+PasswordLastSet        :\
+LastLogon              :\
+Name                   : Administrador\
+SID                    : S-1-5-21-2089173426-2880232852-2385612457-500\
+PrincipalSource        : Local\
+ObjectClass            : User\
+\
+\
+AccountExpires         :\
+Deion            : Conta incorporada para acesso como convidado ao computador/dom\'ednio\
+Enabled                : False\
+FullName               :\
+PasswordChangeableDate :\
+PasswordExpires        :\
+UserMayChangePassword  : False\
+PasswordRequired       : False\
+PasswordLastSet        :\
+LastLogon              :\
+Name                   : Convidado\
+SID                    : S-1-5-21-2089173426-2880232852-2385612457-501\
+PrincipalSource        : Local\
+ObjectClass            : User\
+\
+\
+AccountExpires         :\
+Deion            : Conta de utilizador gerida pelo sistema.\
+Enabled                : False\
+FullName               :\
+PasswordChangeableDate :\
+PasswordExpires        :\
+UserMayChangePassword  : True\
+PasswordRequired       : False\
+PasswordLastSet        :\
+LastLogon              :\
+Name                   : DefaultAccount\
+SID                    : S-1-5-21-2089173426-2880232852-2385612457-503\
+PrincipalSource        : Local\
+ObjectClass            : User\
+\
+\
+AccountExpires         :\
+Deion            :\
+Enabled                : True\
+FullName               : ID ID\
+PasswordChangeableDate : 21/02/2018 08:32:13\
+PasswordExpires        :\
+UserMayChangePassword  : True\
+PasswordRequired       : False\
+PasswordLastSet        : 21/02/2018 08:32:13\
+LastLogon              : 06/12/2017 13:58:27\
+Name                   : ID\
+SID                    : S-1-5-21-2089173426-2880232852-2385612457-1003\
+PrincipalSource        : MicrosoftAccount\
+ObjectClass            : User\
+\
+\
+AccountExpires         :\
+Deion            :\
+Enabled                : True\
+FullName               :\
+PasswordChangeableDate :\
+PasswordExpires        :\
+UserMayChangePassword  : True\
+PasswordRequired       : False\
+PasswordLastSet        :\
+LastLogon              : 11/11/2016 08:36:36\
+Name                   : PC1\
+SID                    : S-1-5-21-2089173426-2880232852-2385612457-1001\
+PrincipalSource        : Local\
+ObjectClass            : User\
+\
+\
+AccountExpires         :\
+Deion            : Local user account for execution of R s in SQL Server instance SQL_IDPRODUCTION\
+Enabled                : True\
+FullName               : SQL_IDPRODUCTION00\
+PasswordChangeableDate : 23/03/2018 16:18:26\
+PasswordExpires        :\
+UserMayChangePassword  : False\
+PasswordRequired       : True\
+PasswordLastSet        : 23/03/2018 16:18:26\
+LastLogon              : 18/04/2018 17:13:45\
+Name                   : SQL_IDPRODUCTION00\
+SID                    : S-1-5-21-2089173426-2880232852-2385612457-1034\
+PrincipalSource        : Local\
+ObjectClass            : User\
+\
+\
+AccountExpires         :\
+Deion            : Local user account for execution of R s in SQL Server instance SQL_IDPRODUCTION\
+Enabled                : True\
+FullName               : SQL_IDPRODUCTION01\
+PasswordChangeableDate : 23/03/2018 16:18:26\
+PasswordExpires        :\
+UserMayChangePassword  : False\
+PasswordRequired       : True\
+PasswordLastSet        : 23/03/2018 16:18:26\
+LastLogon              : 18/04/2018 17:13:45\
+Name                   : SQL_IDPRODUCTION01\
+SID                    : S-1-5-21-2089173426-2880232852-2385612457-1035\
+PrincipalSource        : Local\
+ObjectClass            : User\
+\
+\
+AccountExpires         :\
+Deion            : Local user account for execution of R s in SQL Server instance SQL_IDPRODUCTION\
+Enabled                : True\
+FullName               : SQL_IDPRODUCTION02\
+PasswordChangeableDate : 23/03/2018 16:18:26\
+PasswordExpires        :\
+UserMayChangePassword  : False\
+PasswordRequired       : True\
+PasswordLastSet        : 23/03/2018 16:18:26\
+LastLogon              : 18/04/2018 17:13:45\
+Name                   : SQL_IDPRODUCTION02\
+SID                    : S-1-5-21-2089173426-2880232852-2385612457-1036\
+PrincipalSource        : Local\
+ObjectClass            : User\
+\
+\
+AccountExpires         :\
+Deion            : Local user account for execution of R s in SQL Server instance SQL_IDPRODUCTION\
+Enabled                : True\
+FullName               : SQL_IDPRODUCTION03\
+PasswordChangeableDate : 23/03/2018 16:18:26\
+PasswordExpires        :\
+UserMayChangePassword  : False\
+PasswordRequired       : True\
+PasswordLastSet        : 23/03/2018 16:18:26\
+LastLogon              : 18/04/2018 17:13:45\
+Name                   : SQL_IDPRODUCTION03\
+SID                    : S-1-5-21-2089173426-2880232852-2385612457-1037\
+PrincipalSource        : Local\
+ObjectClass            : User\
+\
+\
+AccountExpires         :\
+Deion            : Local user account for execution of R s in SQL Server instance SQL_IDPRODUCTION\
+Enabled                : True\
+FullName               : SQL_IDPRODUCTION04\
+PasswordChangeableDate : 23/03/2018 16:18:26\
+PasswordExpires        :\
+UserMayChangePassword  : False\
+PasswordRequired       : True\
+PasswordLastSet        : 23/03/2018 16:18:26\
+LastLogon              : 18/04/2018 17:13:45\
+Name                   : SQL_IDPRODUCTION04\
+SID                    : S-1-5-21-2089173426-2880232852-2385612457-1038\
+PrincipalSource        : Local\
+ObjectClass            : User\
+\
+\
+AccountExpires         :\
+Deion            : Local user account for execution of R s in SQL Server instance SQL_IDPRODUCTION\
+Enabled                : True\
+FullName               : SQL_IDPRODUCTION05\
+PasswordChangeableDate : 23/03/2018 16:18:26\
+PasswordExpires        :\
+UserMayChangePassword  : False\
+PasswordRequired       : True\
+PasswordLastSet        : 23/03/2018 16:18:26\
+LastLogon              : 18/04/2018 17:13:45\
+Name                   : SQL_IDPRODUCTION05\
+SID                    : S-1-5-21-2089173426-2880232852-2385612457-1039\
+PrincipalSource        : Local\
+ObjectClass            : User\
+\
+\
+AccountExpires         :\
+Deion            : Local user account for execution of R s in SQL Server instance SQL_IDPRODUCTION\
+Enabled                : True\
+FullName               : SQL_IDPRODUCTION06\
+PasswordChangeableDate : 23/03/2018 16:18:26\
+PasswordExpires        :\
+UserMayChangePassword  : False\
+PasswordRequired       : True\
+PasswordLastSet        : 23/03/2018 16:18:26\
+LastLogon              : 18/04/2018 17:13:45\
+Name                   : SQL_IDPRODUCTION06\
+SID                    : S-1-5-21-2089173426-2880232852-2385612457-1040\
+PrincipalSource        : Local\
+ObjectClass            : User\
+\
+\
+AccountExpires         :\
+Deion            : Local user account for execution of R s in SQL Server instance SQL_IDPRODUCTION\
+Enabled                : True\
+FullName               : SQL_IDPRODUCTION07\
+PasswordChangeableDate : 23/03/2018 16:18:26\
+PasswordExpires        :\
+UserMayChangePassword  : False\
+PasswordRequired       : True\
+PasswordLastSet        : 23/03/2018 16:18:26\
+LastLogon              : 18/04/2018 17:13:45\
+Name                   : SQL_IDPRODUCTION07\
+SID                    : S-1-5-21-2089173426-2880232852-2385612457-1041\
+PrincipalSource        : Local\
+ObjectClass            : User\
+\
+\
+AccountExpires         :\
+Deion            : Local user account for execution of R s in SQL Server instance SQL_IDPRODUCTION\
+Enabled                : True\
+FullName               : SQL_IDPRODUCTION08\
+PasswordChangeableDate : 23/03/2018 16:18:26\
+PasswordExpires        :\
+UserMayChangePassword  : False\
+PasswordRequired       : True\
+PasswordLastSet        : 23/03/2018 16:18:26\
+LastLogon              : 18/04/2018 17:13:45\
+Name                   : SQL_IDPRODUCTION08\
+SID                    : S-1-5-21-2089173426-2880232852-2385612457-1042\
+PrincipalSource        : Local\
+ObjectClass            : User\
+\
+\
+AccountExpires         :\
+Deion            : Local user account for execution of R s in SQL Server instance SQL_IDPRODUCTION\
+Enabled                : True\
+FullName               : SQL_IDPRODUCTION09\
+PasswordChangeableDate : 23/03/2018 16:18:26\
+PasswordExpires        :\
+UserMayChangePassword  : False\
+PasswordRequired       : True\
+PasswordLastSet        : 23/03/2018 16:18:26\
+LastLogon              : 18/04/2018 17:13:45\
+Name                   : SQL_IDPRODUCTION09\
+SID                    : S-1-5-21-2089173426-2880232852-2385612457-1043\
+PrincipalSource        : Local\
+ObjectClass            : User\
+\
+\
+AccountExpires         :\
+Deion            : Local user account for execution of R s in SQL Server instance SQL_IDPRODUCTION\
+Enabled                : True\
+FullName               : SQL_IDPRODUCTION10\
+PasswordChangeableDate : 23/03/2018 16:18:26\
+PasswordExpires        :\
+UserMayChangePassword  : False\
+PasswordRequired       : True\
+PasswordLastSet        : 23/03/2018 16:18:26\
+LastLogon              : 18/04/2018 17:13:45\
+Name                   : SQL_IDPRODUCTION10\
+SID                    : S-1-5-21-2089173426-2880232852-2385612457-1044\
+PrincipalSource        : Local\
+ObjectClass            : User\
+\
+\
+AccountExpires         :\
+Deion            : Local user account for execution of R s in SQL Server instance SQL_IDPRODUCTION\
+Enabled                : True\
+FullName               : SQL_IDPRODUCTION11\
+PasswordChangeableDate : 23/03/2018 16:18:26\
+PasswordExpires        :\
+UserMayChangePassword  : False\
+PasswordRequired       : True\
+PasswordLastSet        : 23/03/2018 16:18:26\
+LastLogon              : 18/04/2018 17:13:45\
+Name                   : SQL_IDPRODUCTION11\
+SID                    : S-1-5-21-2089173426-2880232852-2385612457-1045\
+PrincipalSource        : Local\
+ObjectClass            : User\
+\
+\
+AccountExpires         :\
+Deion            : Local user account for execution of R s in SQL Server instance SQL_IDPRODUCTION\
+Enabled                : True\
+FullName               : SQL_IDPRODUCTION12\
+PasswordChangeableDate : 23/03/2018 16:18:26\
+PasswordExpires        :\
+UserMayChangePassword  : False\
+PasswordRequired       : True\
+PasswordLastSet        : 23/03/2018 16:18:26\
+LastLogon              : 18/04/2018 17:13:45\
+Name                   : SQL_IDPRODUCTION12\
+SID                    : S-1-5-21-2089173426-2880232852-2385612457-1046\
+PrincipalSource        : Local\
+ObjectClass            : User\
+\
+\
+AccountExpires         :\
+Deion            : Local user account for execution of R s in SQL Server instance SQL_IDPRODUCTION\
+Enabled                : True\
+FullName               : SQL_IDPRODUCTION13\
+PasswordChangeableDate : 23/03/2018 16:18:26\
+PasswordExpires        :\
+UserMayChangePassword  : False\
+PasswordRequired       : True\
+PasswordLastSet        : 23/03/2018 16:18:26\
+LastLogon              : 18/04/2018 17:13:45\
+Name                   : SQL_IDPRODUCTION13\
+SID                    : S-1-5-21-2089173426-2880232852-2385612457-1047\
+PrincipalSource        : Local\
+ObjectClass            : User\
+\
+\
+AccountExpires         :\
+Deion            : Local user account for execution of R s in SQL Server instance SQL_IDPRODUCTION\
+Enabled                : True\
+FullName               : SQL_IDPRODUCTION14\
+PasswordChangeableDate : 23/03/2018 16:18:26\
+PasswordExpires        :\
+UserMayChangePassword  : False\
+PasswordRequired       : True\
+PasswordLastSet        : 23/03/2018 16:18:26\
+LastLogon              : 18/04/2018 17:13:45\
+Name                   : SQL_IDPRODUCTION14\
+SID                    : S-1-5-21-2089173426-2880232852-2385612457-1048\
+PrincipalSource        : Local\
+ObjectClass            : User\
+\
+\
+AccountExpires         :\
+Deion            : Local user account for execution of R s in SQL Server instance SQL_IDPRODUCTION\
+Enabled                : True\
+FullName               : SQL_IDPRODUCTION15\
+PasswordChangeableDate : 23/03/2018 16:18:26\
+PasswordExpires        :\
+UserMayChangePassword  : False\
+PasswordRequired       : True\
+PasswordLastSet        : 23/03/2018 16:18:26\
+LastLogon              : 18/04/2018 17:13:45\
+Name                   : SQL_IDPRODUCTION15\
+SID                    : S-1-5-21-2089173426-2880232852-2385612457-1049\
+PrincipalSource        : Local\
+ObjectClass            : User\
+\
+\
+AccountExpires         :\
+Deion            : Local user account for execution of R s in SQL Server instance SQL_IDPRODUCTION\
+Enabled                : True\
+FullName               : SQL_IDPRODUCTION16\
+PasswordChangeableDate : 23/03/2018 16:18:26\
+PasswordExpires        :\
+UserMayChangePassword  : False\
+PasswordRequired       : True\
+PasswordLastSet        : 23/03/2018 16:18:26\
+LastLogon              : 18/04/2018 17:13:45\
+Name                   : SQL_IDPRODUCTION16\
+SID                    : S-1-5-21-2089173426-2880232852-2385612457-1050\
+PrincipalSource        : Local\
+ObjectClass            : User\
+\
+\
+AccountExpires         :\
+Deion            : Local user account for execution of R s in SQL Server instance SQL_IDPRODUCTION\
+Enabled                : True\
+FullName               : SQL_IDPRODUCTION17\
+PasswordChangeableDate : 23/03/2018 16:18:26\
+PasswordExpires        :\
+UserMayChangePassword  : False\
+PasswordRequired       : True\
+PasswordLastSet        : 23/03/2018 16:18:26\
+LastLogon              : 18/04/2018 17:13:45\
+Name                   : SQL_IDPRODUCTION17\
+SID                    : S-1-5-21-2089173426-2880232852-2385612457-1051\
+PrincipalSource        : Local\
+ObjectClass            : User\
+\
+\
+AccountExpires         :\
+Deion            : Local user account for execution of R s in SQL Server instance SQL_IDPRODUCTION\
+Enabled                : True\
+FullName               : SQL_IDPRODUCTION18\
+PasswordChangeableDate : 23/03/2018 16:18:26\
+PasswordExpires        :\
+UserMayChangePassword  : False\
+PasswordRequired       : True\
+PasswordLastSet        : 23/03/2018 16:18:26\
+LastLogon              : 18/04/2018 17:13:45\
+Name                   : SQL_IDPRODUCTION18\
+SID                    : S-1-5-21-2089173426-2880232852-2385612457-1052\
+PrincipalSource        : Local\
+ObjectClass            : User\
+\
+\
+AccountExpires         :\
+Deion            : Local user account for execution of R s in SQL Server instance SQL_IDPRODUCTION\
+Enabled                : True\
+FullName               : SQL_IDPRODUCTION19\
+PasswordChangeableDate : 23/03/2018 16:18:26\
+PasswordExpires        :\
+UserMayChangePassword  : False\
+PasswordRequired       : True\
+PasswordLastSet        : 23/03/2018 16:18:26\
+LastLogon              : 18/04/2018 17:13:45\
+Name                   : SQL_IDPRODUCTION19\
+SID                    : S-1-5-21-2089173426-2880232852-2385612457-1053\
+PrincipalSource        : Local\
+ObjectClass            : User\
+\
+\
+AccountExpires         :\
+Deion            : Local user account for execution of R s in SQL Server instance SQL_IDPRODUCTION\
+Enabled                : True\
+FullName               : SQL_IDPRODUCTION20\
+PasswordChangeableDate : 23/03/2018 16:18:26\
+PasswordExpires        :\
+UserMayChangePassword  : False\
+PasswordRequired       : True\
+PasswordLastSet        : 23/03/2018 16:18:26\
+LastLogon              : 18/04/2018 17:13:45\
+Name                   : SQL_IDPRODUCTION20\
+SID                    : S-1-5-21-2089173426-2880232852-2385612457-1054\
+PrincipalSource        : Local\
+ObjectClass            : User\
+\
+\
+AccountExpires         :\
+Deion            : Uma conta de utilizador gerida e utilizada pelo sistema para cen\'e1rios do Windows Defender\
+                         Application Guard.\
+Enabled                : False\
+FullName               :\
+PasswordChangeableDate : 11/12/2017 14:18:53\
+PasswordExpires        : 22/01/2018 14:18:53\
+UserMayChangePassword  : True\
+PasswordRequired       : True\
+PasswordLastSet        : 11/12/2017 14:18:53\
+LastLogon              :\
+Name                   : WDAGUtilityAccount\
+SID                    : S-1-5-21-2089173426-2880232852-2385612457-504\
+PrincipalSource        : Local\
+ObjectClass            : User\
+\
+\
+\
+####################### BIOS INFORMATION #######################\
+\
+SMBIOSBIOSVersion\
+2602\
+\
+BIOS Version:              American Megatrends Inc. 2602, 07/12/2015\
+C:\\Users\\ID>\
+\
+\
+C:\\Users\\ID>wmic product get name, version, installdate\
+InstallDate  Name                                                                                                              Version\
+20161107     Node.js                                                                                                           0.12.2\
+20161108     Microsoft Application Error Reporting                                                                             12.0.6015.5000\
+20180411     Microsoft Access database engine 2010 (English)                                                                   14.0.7015.1000\
+20180322     Microsoft Office Visio MUI (English) 2010                                                                         14.0.7015.1000\
+20180322     Microsoft Office Shared Setup Metadata MUI (English) 2010                                                         14.0.7015.1000\
+20180322     Microsoft Office Shared 64-bit Setup Metadata MUI (English) 2010                                                  14.0.7015.1000\
+20180322     Microsoft Office Office 64-bit Components 2010                                                                    14.0.7015.1000\
+20180322     Microsoft Office Shared 64-bit MUI (English) 2010                                                                 14.0.7015.1000\
+20180322     Microsoft Office Proofing (English) 2010                                                                          14.0.7015.1000\
+20180322     Microsoft Office Shared MUI (English) 2010                                                                        14.0.7015.1000\
+20180322     Microsoft Office Proof (English) 2010                                                                             14.0.7015.1000\
+20180322     Microsoft Office Proof (Spanish) 2010                                                                             14.0.7015.1000\
+20180322     Microsoft Office Proof (French) 2010                                                                              14.0.7015.1000\
+20180411     Microsoft Office Visio 2010                                                                                       14.0.7015.1000\
+20180417     Office 16 Click-to-Run Extensibility Component                                                                    16.0.9126.2152\
+20180417     Office 16 Click-to-Run Localization Component                                                                     16.0.9126.2152\
+20180417     Office 16 Click-to-Run Extensibility Component 64-bit Registration                                                16.0.9126.2152\
+20180417     Office 16 Click-to-Run Licensing Component                                                                        16.0.9126.2152\
+20161107     Visual C++ IDE Core Professional Plus Resource Package                                                            14.0.25420\
+20170928     Windows Desktop Extension SDK Contracts                                                                           10.1.14393.795\
+20161107     Microsoft Visual Studio 2015 Update 3 Performance Debugger Web Views                                              14.0.25420\
+20161107     Microsoft .NET Framework 4.5.1 Multi-Targeting Pack                                                               4.5.50932\
+20180319     Visual C++ Library CRT Desktop Appx Package                                                                       14.13.26128\
+20161107     Visual C++ Library CRT X86 Redist Package                                                                         14.0.24210\
+20170928     .NET Core SDK 1.0.0 (x64) Installer (x64)                                                                         4.0.4911\
+20161107     Microsoft SQL Server Compact 4.0 SP1 x64 ENU                                                                      4.0.8876.1\
+20161107     Microsoft VisualStudio Java Language Service                                                                14.0.25527\
+20161107     Microsoft .NET Framework 4.5.2 Multi-Targeting Pack (ENU)                                                         4.5.51209\
+20161107     Visual C++ Compiler/Tools Premium X86 X64 Cross Resource Package                                                  14.0.24210\
+20161107     Microsoft Visual Studio 2015 Performance Collection Tools                                                         14.0.23107\
+20180323     SQL Server 2017 Shared Management Objects Extensions                                                              14.0.1000.169\
+20161107     Universal CRT Headers Libraries and Sources                                                                       10.0.26624\
+20170912     SQL Server 2017 RC1 Common Files                                                                                  14.0.800.90\
+20161107     Microsoft Visual Studio 2015 Performance Collection Tools - ENU                                                   14.0.23107\
+20170928     Windows IoT Extension SDK Contracts                                                                               10.1.14393.795\
+20161107     Visual C++ IDE Core Professional Plus Resource Package                                                            14.0.25420\
+20161214     Inkscape 0.91                                                                                                     0.91\
+20171205     Microsoft Visual C++ 2017 x64 Minimum Runtime - 14.11.25325                                                       14.11.25325\
+20161107     Visual C++ IDE x64 Package                                                                                        14.0.25420\
+20161107     Visual C++ Compiler/Tools Premium X86 Native Package                                                              14.0.24210\
+20161107     Windows Desktop Extension SDK                                                                                     10.0.26624\
+20170912     Microsoft SQL Server 2017 T-SQL Language Service RC1                                                              14.0.17177.0\
+20161107     Windows IoT Extension SDK Contracts                                                                               10.0.26624\
+20161107     Microsoft Visual Studio Community 2015                                                                            14.0.23107\
+20161107     Azure AD Authentication Connected Service                                                                         14.0.25420\
+20180319     vs_FileTracker_Singleton                                                                                          15.6.27309\
+20170912     Microsoft Visual Studio 2015 Shell (Isolated) Resources                                                           14.0.23107\
+20161107     Visual C++ Compiler/Tools Premium X86 Base Package                                                                14.0.24210\
+20161107     Windows Software Development Kit for Windows Store Apps                                                           8.100.26936\
+20180129     Microsoft .NET Core Host - 2.0.5 (x64)                                                                            16.20.26021\
+20180319     Microsoft ASP.NET Web Tools Packages 15.0 - ENU                                                                   1.0.21214.0\
+20161107     Blend for Visual Studio SDK for .NET 4.5                                                                          3.0.40218.0\
+20161107     Microsoft .NET Framework 4.6.1 SDK                                                                                4.6.01055\
+20171115     Microsoft .NET Core Host - 2.0.3 (x64)                                                                            16.12.25816\
+20161107     Universal CRT Extension SDK                                                                                       10.0.10150\
+20170912     SQL Server 2017 RC1 Integration Services Scale Out Management Portal                                              14.0.800.77\
+20161107     Windows Phone SDK 8.0 Assemblies                                                                                  12.0.31101\
+20161107     Windows Runtime Intellisense Content - en-us                                                                      8.100.25984\
+20161107     Microsoft Visual C++ 2013 x86-x64 Compilers                                                                       12.0.21005\
+20161130     SQL Server 2016 Database Engine Shared                                                                            13.1.4001.0\
+20180319     Microsoft Visual Studio Team Foundation Server 2017 RC Office Integration (x64)                                   15.129.27509\
+20161107     Visual C++ Compiler/Tools Premium X86 ARM Cross Resource Package                                                  14.0.24210\
+20180323     SQL Server 2017 Common Files                                                                                      14.0.1000.169\
+20180129     Windows SDK Desktop Headers x64                                                                                   10.1.16299.15\
+20161107     Windows SDK Desktop Headers Libs Metadata                                                                         10.0.26624\
+20161107     Microsoft ASP.NET MVC 4 - Visual Studio 2015 - ENU                                                                4.1.41102.0\
+20161107     Visual C++ Compiler/Tools X64 ARM Cross Resource Package                                                          14.0.24210\
+20161107     Visual C++ Compiler/Tools Premium X64 X86 Cross Resource Package                                                  14.0.24210\
+20180319     vs_minshellmsi                                                                                                    15.6.27421\
+20180426     ExactusV15                                                                                                        1.0.0\
+20161108     InstallShield 2015 Limited Edition                                                                                22.00.1\
+20161107     Visual C++ IDE Core Package                                                                                       14.0.25431\
+20161107     Microsoft SQL Server 2014 Transact-SQL Dom                                                                  12.0.2000.8\
+20161130     SQL Server 2016 Connection Info                                                                                   13.0.14500.10\
+20161107     Microsoft .NET Framework 4.5 Multi-Targeting Pack                                                                 4.5.50710\
+20161107     Visual C++ Compiler/Tools X64 ARM Cross Package                                                                   14.0.24210\
+20161107     VS Update core components                                                                                         14.0.25431\
+20161118     MarketResearch                                                                                                    130.0.374.000\
+20180323     SQL Server 2017 Batch Parser                                                                                      14.0.1000.169\
+20171205     Microsoft Visual C++ 2017 x64 Additional Runtime - 14.11.25325                                                    14.11.25325\
+20161107     Microsoft Visual Studio Team Foundation Server 2015 Update 3 CTP1 Office Integration Language Pack (x64) - ENU    14.98.25331\
+20161107     Microsoft Visual C++ 2015 x64 Debug Runtime - 14.0.24215                                                          14.0.24215\
+20161107     Visual C++ IDE Common Resource Package                                                                            14.0.25420\
+20161130     SQL Server 2016 Shared Management Objects                                                                         13.0.14500.10\
+20161107     Project and Item Templates for Visual Studio Express 2015 for Windows 10 - ENU                                    14.0.25527\
+20180323     SQL Server 2017 sql_inst_mr                                                                                       14.0.1000.169\
+20170928     Windows SDK Modern Versioned Developer Tools                                                                      10.1.14393.795\
+20170928     WinRT Intellisense Desktop - en-us                                                                                10.1.14393.795\
+20161107     Windows Phone 8.1 SDK - x64                                                                                       8.1.15116\
+20161130     SQL Server 2016 Shared Management Objects                                                                         13.0.14500.10\
+20161104     Intel(R) Management Engine Components                                                                             11.0.0.1153\
+20161107     Microsoft VisualStudio Java Project System                                                                  14.0.25527\
+20180323     SQL Server 2017 Master Data Services                                                                              14.0.1000.169\
+20170928     Windows SDK EULA                                                                                                  10.1.14393.795\
+20170912     SQL Server 2017 RC1 Management Studio Extensions                                                                  14.0.800.90\
+20161107     Windows SDK for Windows Store Apps Headers Libs                                                                   10.1.10586.212\
+20161118     hppLaserJetService                                                                                                001.003.000145\
+20161118     HP LaserJet Professional M1210 MFP Series Toolbox                                                                 1.0.17\
+20161107     Universal General MIDI DLS Extension SDK                                                                          10.1.10586.212\
+20161107     Workflow Manager Tools 1.0 for Visual Studio                                                                      2.0.50408.2\
+20161130     Microsoft SQL Server 2016 RsFx Driver                                                                             13.1.4001.0\
+20180129     WinRT Intellisense Desktop - Other Languages                                                                      10.1.16299.15\
+20161107     Microsoft .NET CoreRuntime For CoreCon                                                                            1.0.0.0\
+20170928     WinRT Intellisense IoT - Other Languages                                                                          10.1.14393.795\
+20161107     Universal CRT Headers Libraries and Sources                                                                       10.0.10150\
+20161107     Xamarin                                                                                                           4.1.1.3\
+20161107     Visual C++ Compiler/Tools X64 Base Resource Package                                                               14.0.24210\
+20161107     Visual C++ Compiler/Tools Premium X86 ARM Cross Package                                                           14.0.24210\
+20170718     InstPortMon                                                                                                       1.4.0.0\
+20161107     Microsoft Build Tools 14.0 (amd64)                                                                                14.0.25420\
+20161130     Microsoft Visual C++ 2010  x64 Redistributable - 10.0.40219                                                       10.0.40219\
+20161107     Microsoft .NET CoreRuntime SDK                                                                                    1.0.23819.0\
+20161107     Microsoft Blend for Visual Studio 2015 - ENU                                                                      14.0.25420\
+20180319     vcpp_crt.redist.clickonce                                                                                         14.13.26020\
+20161107     Behaviors SDK (Windows) for Visual Studio 2013                                                                    12.0.51210.80\
+20180129     Universal General MIDI DLS Extension SDK                                                                          10.1.16299.15\
+20170620     Microsoft Visual C++ 2005 Redistributable (x64)                                                                   8.0.61000\
+20180323     SQL Server 2017 Client Tools                                                                                      14.0.1000.169\
+20180323     SQL Server 2017 Client Tools                                                                                      14.0.1000.169\
+20161107     Visual C++ Library CRT X64 Store Package                                                                          14.0.24210\
+20161107     Visual C++ Library PGO X86 Package                                                                                14.0.24210\
+20170928     Windows SDK for Windows Store Apps DirectX x64 Remote                                                             10.1.14393.795\
+20161107     Microsoft Visual Studio 2015 SDK - ENU                                                                            14.0.23107\
+20161130     Microsoft Visual C++ 2010  x86 Redistributable - 10.0.40219                                                       10.0.40219\
+20161108     SQL Server 2008 R2 Database Engine Services                                                                       10.50.1600.1\
+20161107     Roslyn Language Services - x86                                                                                    14.0.25431\
+20161107     Visual C++ Compiler/Tools X64 Base Package                                                                        14.0.24210\
+20161107     Microsoft LightSwitch for Visual Studio 2015 Core                                                                 14.0.23025\
+20161107     Test Tools for Microsoft Visual Studio 2015                                                                       14.0.23107\
+20161107     Microsoft Visual C++ 2013 Compilers                                                                               12.0.21005\
+20161107     Microsoft Visual Studio 2015 Windows Diagnostic Tools - ENU                                                       14.0.25420\
+20170928     WinRT Intellisense Desktop - Other Languages                                                                      10.1.14393.795\
+20161107     SharePoint Client Components                                                                                      16.0.3104.1200\
+20161107     Visual C++ Compiler/Tools Premium X64 Native Resource Package                                                     14.0.24210\
+20180323     SQL Server 2017 Data quality service                                                                              14.0.1000.169\
+20171016     Microsoft Ribbon for WPF October 2010 (Version 4.0.0.11019)                                                       4.0.0.11019\
+20161107     Visual C++ Compiler/Tools Premium ARM Base Resource Package                                                       14.0.24210\
+20161107     Microsoft Visual C++ 2013 x86 Minimum Runtime - 12.0.21005                                                        12.0.21005\
+20161107     Microsoft Visual Studio 2015 Devenv                                                                               14.0.23107\
+20180129     Windows SDK Desktop Tools arm64                                                                                   10.1.16299.15\
+20161107     Microsoft Visual C++ 2013 x86 Additional Runtime - 12.0.21005                                                     12.0.21005\
+20180323     SQL Server 2017 Shared Management Objects Extensions                                                              14.0.1000.169\
+20161107     Windows 8 Development Essentials                                                                                  14.0.23107\
+20161107     vs_update3notification                                                                                            14.0.25431\
+20180315     ExactusV17                                                                                                        17.1.1\
+20161107     LocalESPCui for en-us                                                                                             8.59.29989\
+20161107     AzureTools.Notifications                                                                                          2.7.30611.1601\
+20161107     Windows Phone 8.1 Tools for Visual Studio 2015                                                                    14.0.25527\
+20161107     Visual C++ IDE Core Professional Plus Resource Package                                                            14.0.25420\
+20161107     Microsoft .NET Framework 4.5.1 Multi-Targeting Pack (ENU)                                                         4.5.50932\
+20180323     SQL Server 2017 Distributed Replay                                                                                14.0.1000.169\
+20161107     Microsoft Visual Studio Team Foundation Server 2015 Update 3 CTP1 Storyboarding (x64)                             14.98.25331\
+20161107     Microsoft Visual C++ 2012 Core Libraries For Windows Phone                                                        11.0.50727\
+20161107     Microsoft Build Tools Language Resources 14.0 (x86)                                                               14.0.25420\
+20161107     Windows Mobile Connectivity Tools 10.0.10240.0 - Desktop x86                                                      10.0.12671\
+20161107     Microsoft .NET Framework 4.5.1 RC Multi-Targeting Pack for Windows Store Apps                                     4.5.21005\
+20161107     Microsoft Visual Studio 2015 XAML Visual Diagnostics                                                              14.0.25431\
+20180129     MSI Development Tools                                                                                             10.1.16299.15\
+20180129     Windows SDK DirectX x64 Remote                                                                                    10.1.16299.15\
+20161107     Visual C++ Library CRT ARM Store Package                                                                          14.0.24210\
+20161108     Microsoft SQL Server 2008 R2 Policies                                                                             10.50.1600.1\
+20161108     Microsoft Visual C++ 2012 x86 Minimum Runtime - 11.0.50727                                                        11.0.50727\
+20180323     SQL Server 2017 Client Tools Extensions                                                                           14.0.1000.169\
+20170912     SQL Server Management Studio for Reporting Services                                                               14.0.17177.0\
+20161107     Windows SDK AddOn                                                                                                 10.1.0.0\
+20161107     Microsoft Visual C++ 2013 x86 Debug Runtime - 12.0.21005                                                          12.0.21005\
+20161107     Visual C++ Library ATL X64 Package                                                                                14.0.23026\
+20161107     Visual C++ IDE Core Professional Plus Resource Package                                                            14.0.25420\
+20170928     WinRT Intellisense PPI - en-us                                                                                    10.1.14393.795\
+20161107     Visual Studio 2015 Prerequisites - ENU Language Pack                                                              14.0.23107\
+20161107     Windows Software Development Kit                                                                                  8.100.26936\
+20161107     Visual C++ Compiler/Tools X86 Native Resource Package                                                             14.0.24210\
+20161107     Visual C++ Professional Windows 8.1 Templates Package                                                             14.0.23107\
+20170928     Windows SDK for Windows Store Apps DirectX x86 Remote                                                             10.1.14393.795\
+20161107     SharePoint Client Components                                                                                      15.0.4641.1002\
+20161107     Windows Phone 8.1 Tools for Visual Studio 2013 - ENU                                                              12.0.30723\
+20161107     Visual C++ Library PGO X64 Package                                                                                14.0.24210\
+20180323     SQL Server 2017 Distributed Replay                                                                                14.0.1000.169\
+20161118     HPSSupply                                                                                                         2.1.1.0000\
+20161107     Visual C++ MSBuild X64 Package                                                                                    14.0.25420\
+20180323     SQL Server 2017 DMF                                                                                               14.0.1000.169\
+20161107     Windows Mobile Extension SDK 10.0.10240.0 - x86                                                                   10.0.10240.0\
+20180319     vs_communitymsi                                                                                                   15.6.27406\
+20180319     Microsoft Visual Studio Team Foundation Server 2017 RC Office Integration Language Pack (x64) - ENU               15.129.27509\
+20161107     Open XML SDK 2.5 for Microsoft Office                                                                             2.5.5631\
+20161107     Windows Team Extension SDK Contracts                                                                              10.1.10586.212\
+20161107     Project and Item Templates for Visual Studio Community 2015 - ENU                                                 14.0.23107\
+20161104     Intel\'ae Trusted Connect Service Client                                                                             1.42.17.0\
+20180129     Windows SDK ARM Desktop Tools                                                                                     10.1.16299.15\
+20171115     Microsoft .NET Core SDK - 2.0.3 (x64)                                                                             8.0.56242\
+20161107     Visual Studio 2012 Verification SDK                                                                               14.0.25420\
+20180129     VS JIT Debugger                                                                                                   16.0.76.0\
+20170502     Adobe AIR                                                                                                         3.1.0.4880\
+20180319     icecap_collectionresourcesx64                                                                                     15.6.27406\
+20180323     SQL Server 2017 Distributed Replay                                                                                14.0.1000.169\
+20180322     Microsoft HEVC Media Extension Installation for Microsoft.HEVCVideoExtension_1.0.2512.0_x64__8wekyb3d8bbwe (x64)  1.0.0.0\
+20171013     Windows App Certification Kit x64                                                                                 10.1.16299.15\
+20161108     Microsoft Visual C++ 2012 x86 Additional Runtime - 11.0.50727                                                     11.0.50727\
+20161107     CodedUITest81                                                                                                     14.0.23107\
+20161130     SQL Server 2016 Database Engine Shared                                                                            13.1.4001.0\
+20170718     EPSON Port Communication Service                                                                                  3.12.0\
+20161107     Build Tools for Windows 10                                                                                        14.0.25527\
+20161107     Microsoft .NET Version Manager (x64) 1.0.0-beta5                                                                  1.0.10609.0\
+20180319     vs_minshellinteropmsi                                                                                             15.6.27323\
+20161107     Microsoft Visual C++ 2012 x64 Minimum Runtime - 11.0.60610                                                        11.0.60610\
+20161107     Visual C++ IDE Desktop Plus Package                                                                               14.0.23107\
+20180129     ClickOnce Bootstrapper Package for Microsoft .NET Framework                                                       4.7.02558\
+20180323     Microsoft MPI (7.0.12437.8)                                                                                       7.0.12437.8\
+20161107     Microsoft ASP.NET Web Pages 2 - Visual Studio 2015 - ENU                                                          4.1.41102.0\
+20171223     Microsoft ASP.NET MVC 2                                                                                           2.0.60926.0\
+20161107     Microsoft .NET Core 5.0 SDK                                                                                       1.0.23902\
+20161107     Windows Phone 8.1 SDK - Desktop                                                                                   8.1.15116\
+20161107     Visual C++ IDE Core Professional Plus Resource Package                                                            14.0.25420\
+20161107     Microsoft Visual Studio 2015 Update 3 Diagnostic Tools - x86                                                      14.0.25420\
+20161107     Visual C++ Library CRT X64 OneCore For Desktop Package                                                            14.0.24210\
+20161107     Windows Software Development Kit for Windows Store Apps DirectX x86 Remote                                        8.100.26936\
+20161107     Visual C++ Library CRT X86 OneCore For Desktop Package                                                            14.0.24210\
+20170329     MySQL Connector Net 6.9.6                                                                                         6.9.6\
+20171013     Windows SDK                                                                                                       10.1.16299.15\
+20161130     Microsoft SQL Server 2008 Setup Support Files                                                                     10.3.5500.0\
+20180323     SQL Server 2017 Shared Management Objects                                                                         14.0.1000.169\
+20161107     Type Power Tool                                                                                             1.8.34.0\
+20170928     WinAppDeploy                                                                                                      10.1.14393.795\
+20161107     Microsoft Visual Studio 2015 XAML Visual Diagnostics - ENU                                                        14.0.25420\
+20161107     Microsoft Visual C++ 2012 x86 Minimum Runtime - 11.0.60610                                                        11.0.60610\
+20161107     Windows Phone 8.1 Tools for Visual Studio Express 2015 for Windows                                                14.0.25527\
+20161107     Project and Item Templates for Visual Studio Professionald 2015 - ENU                                             14.0.25527\
+20161107     Microsoft System CLR Types for SQL Server 2016                                                                    13.0.1601.5\
+20161107     MSBuild/NuGet Integration 14.0 (x86)                                                                              14.0.25420\
+20180222     WindBlades                                                                                                        1.00.0000\
+20171205     Microsoft Team Foundation Server 2018                                                                             16.122.27102\
+20161107     Prerequisites for SSDT                                                                                            12.0.2000.8\
+20161107     Visual C++ IDE Core Professional Plus Resource Package                                                            14.0.25420\
+20180419     Barbal BWT                                                                                                        1.0.1\
+20180129     Windows Mobile Extension SDK Contracts                                                                            10.1.16299.15\
+20171013     vs_communitymsires                                                                                                15.0.26621\
+20161104     Intel\'ae Security Assist                                                                                            1.0.0.532\
+20180129     WinRT Intellisense IoT - Other Languages                                                                          10.1.16299.15\
+20170912     Microsoft Visual Studio Tools for Applications 2015 Language Support Finalizer                                    14.0.23107.20\
+20180319     Visual C++ Library CRT Appx Resource Package                                                                      14.13.26128\
+20180129     vs_clickoncebootstrappermsi                                                                                       15.0.27005\
+20180129     VS WCF Debugging                                                                                                  16.0.76.0\
+20161107     Windows Team Extension SDK                                                                                        10.0.26624\
+20161107     Workflow Manager Client 1.0                                                                                       2.0.50408.1\
+20161107     Visual C++ MSBuild Base Package                                                                                   14.0.25420\
+20180323     SQL Server 2017 Advanced Analytics                                                                                14.0.1000.169\
+20180129     Windows Desktop Extension SDK Contracts                                                                           10.1.16299.15\
+20180319     Microsoft .NET Core Host FX Resolver - 2.0.6 (x64)                                                                16.24.26212\
+20180129     Windows SDK Desktop Headers x86                                                                                   10.1.16299.15\
+20170928     Windows Mobile Extension SDK 10.0.14393.0 - ARM                                                                   10.1.14393.795\
+20161107     Visual C++ Library PGO Headers Package                                                                            14.0.24210\
+20161107     Windows Mobile Extension SDK 10.0.10240.0 - ARM                                                                   10.0.10240.0\
+20180323     SQL Server 2017 Database Engine Shared                                                                            14.0.1000.169\
+20161107     Microsoft Visual Studio 2010 Tools for Office Runtime (x64)                                                       10.0.50908\
+20161107     Microsoft Silverlight 5 SDK                                                                                       5.0.61118.0\
+20161107     Microsoft Visual Studio Professional 2015                                                                         14.0.23107\
+20161107     Microsoft Azure Mobile Services Tools for Visual Studio - v1.4                                                    1.4.30611.1601\
+20161107     Visual C++ IDE Professional Core Package                                                                          14.0.25420\
+20161107     Visual C++ Library CRT ARM Redist Package                                                                         14.0.24210\
+20170912     Microsoft Visual Studio 2015 Shell (Minimum) Interop Assemblies                                                   14.0.23107\
+20161107     Java SE Development Kit 7 Update 55                                                                               1.7.0.550\
+20180319     icecap_collection_x64                                                                                             15.6.27413\
+20180322     Microsoft ODBC Driver 13 for SQL Server                                                                           14.0.1000.169\
+20161107     Microsoft Visual C++  x64-x86 Cross Compilers - ENU Resources                                                     12.0.21005\
+20180129     Windows IoT Extension SDK                                                                                         10.1.16299.15\
+20180319     icecap_collection_neutral                                                                                         15.6.27413\
+20161107     Visual C++ IDE Core Professional Plus Resource Package                                                            14.0.25420\
+20161107     LocalESPC                                                                                                         8.59.29989\
+20180323     SQL Server 2017 Data quality client                                                                               14.0.1000.169\
+20161108     SQL Server 2008 R2 Database Engine Shared                                                                         10.50.1600.1\
+20161107     Visual C++ Professional Templates Resource Package                                                                14.0.23107\
+20180129     Windows SDK Modern Versioned Developer Tools                                                                      10.1.16299.15\
+20170912     Microsoft SQL Server Data-Tier Application Framework (x86)                                                        14.0.3757.2\
+20161107     Microsoft Office Developer Tools for Visual Studio 2015 - VSTO Design Time (x64)                                  14.0.23025\
+20161107     Visual C++ Compiler/Tools X86 Base Package                                                                        14.0.24210\
+20161107     Microsoft Office Developer Tools for Visual Studio 2015 Nuget Package                                             14.0.23725\
+20180129     WinRT Intellisense UAP - Other Languages                                                                          10.1.16299.15\
+20171013     Windows SDK for Windows Store Apps                                                                                10.1.16299.15\
+20161107     Windows Desktop Extension SDK Contracts                                                                           10.0.26624\
+20161108     Microsoft SQL Server 2008 R2 RsFx Driver                                                                          10.50.1600.1\
+20161107     Microsoft System CLR Types for SQL Server 2014                                                                    12.0.2402.11\
+20180129     vs_clickoncesigntoolmsi                                                                                           15.0.27005\
+20180319     IIS 10.0 Express                                                                                                  10.0.1741\
+20161107     Windows Phone 8.1 Tools for Visual Studio Professionald 2013 - ENU                                                12.0.30723\
+20161107     Microsoft SQL Server 2016 T-SQL Language Service                                                                  13.0.14500.10\
+20161107     Microsoft Visual C++ 2012 x86 Debug Runtime - 11.0.60610                                                          11.0.60610\
+20161107     Windows Phone 8.0 Managed SDK Profiler (X86)                                                                      11.0.50727\
+20170912     Microsoft Visual Studio 2015 Shell (Minimum)                                                                      14.0.23107\
+20180323     SQL Server 2017 Distributed Replay                                                                                14.0.1000.169\
+20161107     Microsoft Visual Studio 2015 Add-in for Windows Phone - ENU Language Pack                                         14.0.23107\
+20161118     hppusgM1130M1210Series                                                                                            1.0.0.2\
+20161107     Microsoft Visual Studio 2015 XAML Designer                                                                        14.0.25431\
+20180319     Microsoft Azure Storage Emulator - v5.4                                                                           5.4.1811.0037\
+20180319     Microsoft .NET Core SDK - 2.1.101 (x64)                                                                           8.25.23808\
+20161107     Windows Phone 8.1 Tools for Visual Studio Professional 2013                                                       12.0.30723\
+20170928     Windows Mobile Connectivity Tools 10.0.14393.0 - Desktop x86                                                      10.1.14393.795\
+20180129     vs_clickoncebootstrappermsires                                                                                    15.0.27005\
+20161107     Microsoft Visual C++ 2012 x64 Additional Runtime - 11.0.60610                                                     11.0.60610\
+20161107     Visual C++ IDE Desktop Plus Resource Package                                                                      14.0.23107\
+20180129     Universal CRT Headers Libraries and Sources                                                                       10.1.16299.15\
+20180129     Windows SDK Desktop Tools x64                                                                                     10.1.16299.15\
+20161104     Intel(R) Management Engine Components                                                                             1.0.0.0\
+20161107     Visual C++ MSBuild X86 Package                                                                                    14.0.25420\
+20161107     Microsoft Report Viewer Add-On for Visual Studio 2015                                                             12.0.2402.20\
+20171205     Microsoft ASP.NET MVC 4 Runtime                                                                                   4.0.40804.0\
+20161107     Microsoft .NET Native SDK Tools                                                                                   1.0.24208\
+20161107     IDE Tools for Windows 10 - ENU                                                                                    14.0.25527\
+20171013     Microsoft .NET Core Host - 2.0.0 (x64)                                                                            16.0.25521\
+20161107     Visual C++ Compiler/Tools X86 ARM Cross Resource Package                                                          14.0.24210\
+20161130     SQL Server 2016 Connection Info                                                                                   13.0.14500.10\
+20161107     Microsoft Visual C++  x64 Native Compilers - ENU Resources                                                        12.0.21005\
+20180323     SQL Server 2017 Connection Info                                                                                   14.0.1000.169\
+20161107     Visual C++ Compiler/Tools Premium X64 Base Resource Package                                                       14.0.24210\
+20170912     SQL Server Management Studio for Analysis Services                                                                14.0.17177.0\
+20161107     Blend for Visual Studio SDK for Windows Phone 8.0                                                                 3.0.30924.0\
+20180323     SQL Server 2017 SQL Diagnostics                                                                                   14.0.1000.169\
+20170912     Microsoft Analysis Services OLE DB Provider                                                                       14.0.800.90\
+20170928     Windows SDK Desktop Tools                                                                                         10.1.14393.795\
+20161107     Prerequisites for SSDT                                                                                            13.0.1601.5\
+20171013     Windows Simulator                                                                                                 15.0.26621\
+20170928     Microsoft Visual C++ 2013 x64 Additional Runtime - 12.0.21005                                                     12.0.21005\
+20180319     Microsoft Visual Studio Setup Configuration                                                                       1.15.3213.55575\
+20161107     Visual Studio 2012 Verification SDK - enu                                                                         14.0.23107\
+20161107     Microsoft Visual Studio Connected Services                                                                        14.0.25420\
+20161107     Microsoft Visual Studio Community 2015 - ENU                                                                      14.0.23107\
+20161107     Microsoft .NET Framework 4.5.1 RC Multi-Targeting Pack for Windows Store Apps (ENU)                               4.5.21005\
+20161107     Visual Studio Extensions for Windows Library for Java                                                       2.1.25420.01\
+20170912     Microsoft Visual Studio 2015 Shell (Minimum) Resources                                                            14.0.23107\
+20161118     hppM1130M1210SeriesLaserJetService                                                                                001.003.00073\
+20161107     Visual C++ Library ATL Headers Package                                                                            14.0.23026\
+20180323     Java 10 (64-bit)                                                                                                  10.0.0.0\
+20161107     Windows Phone 8.1 SDK - ARM                                                                                       8.1.15116\
+20161107     Tools for .Net 3.5                                                                                                3.11.50727\
+20180323     SQL Server 2017 Master Data Services                                                                              14.0.1000.169\
+20161107     Microsoft NuGet - Visual Studio 2015                                                                              3.4.4.1321\
+20161107     Windows Desktop Extension SDK                                                                                     10.1.10586.212\
+20180129     Windows SDK Desktop Headers arm                                                                                   10.1.16299.15\
+20161107     Active Directory Authentication Library for SQL Server (x86)                                                      13.0.1601.5\
+20170928     Windows IoT Extension SDK                                                                                         10.1.14393.795\
+20170928     Windows Team Extension SDK Contracts                                                                              10.1.14393.795\
+20170223     Microsoft Visual C++ 2008 Redistributable - x64 9.0.30729.6161                                                    9.0.30729.6161\
+20161107     Windows Software Development Kit DirectX x86 Remote                                                               8.100.25984\
+20180326     Microsoft ASP.NET Diagnostic Pack for Visual Studio                                                               15.0.40314.0\
+20180129     Universal CRT Extension SDK                                                                                       10.1.16299.15\
+20180226     Adobe Refresh Manager                                                                                             1.8.0\
+20180226     Adobe Acrobat Reader DC - Portugu\'eas                                                                               18.011.20038\
+20180129     WinRT Intellisense Mobile - en-us                                                                                 10.1.16299.15\
+20161107     Windows Phone 8.0 Emulation Host                                                                                  11.0.60610\
+20180226     Microsoft Mouse and Keyboard Center                                                                               3.2.116.0\
+20180322     Browser for SQL Server 2017                                                                                       14.0.1000.169\
+20180319     Type SDK                                                                                                    2.6.5.0\
+20171013     Microsoft Azure Libraries for .NET - v2.9                                                                        3.0.0127.060\
+20180129     Windows SDK for Windows Store Apps Libs                                                                           10.1.16299.15\
+20161107     Microsoft SQL Server 2014 Management Objects  (x64)                                                               12.0.2000.8\
+20170912     SSMS Post Install Tasks                                                                                           14.0.17177.0\
+20161107     Microsoft LightSwitch for Visual Studio 2015 v5.0 ToolsRes - ENU                                                  14.0.23025\
+20161107     Visual C++ IDE Common Package                                                                                     14.0.25420\
+20161107     Windows Phone 8.1 SDK - x86                                                                                       8.1.15116\
+20170912     SQL Server Management Studio                                                                                      14.0.17177.0\
+20170223     Microsoft Visual C++ 2008 Redistributable - x86 9.0.30729.6161                                                    9.0.30729.6161\
+20170928     Microsoft Visual C++ 2013 x64 Minimum Runtime - 12.0.21005                                                        12.0.21005\
+20161107     Build Tools - x86                                                                                                 12.0.31010\
+20161104     ASUS Product Register Program                                                                                     1.0.030\
+20161107     Windows Mobile Extension SDK 10.0.10586.0 - ARM                                                                   10.1.10586.212\
+20170928     Microsoft .NET Framework 4.6.2 SDK                                                                                4.6.01586\
+20161130     SQL Server 2016 Database Engine Services                                                                          13.1.4001.0\
+20180129     VS Immersive Activate Helper                                                                                      16.0.76.0\
+20161107     Visual C++ Compiler/Tools Premium X86 Base Resource Package                                                       14.0.24210\
+20161107     Universal CRT Extension SDK                                                                                       10.0.26624\
+20161107     Microsoft ASP.NET and Web Tools 2015.1 (Beta8) - Visual Studio 2015                                               14.1.11107.0\
+20170928     Intellisense Lang Pack Mobile Extension SDK 10.0.14393.0                                                          10.1.14393.795\
+20170912     Active Directory Authentication Library for SQL Server                                                            14.0.800.90\
+20171013     Windows App Certification Kit SupportedApiList x86                                                                10.1.16299.15\
+20170120     IKEA Tickets                                                                                                      16.12.0001\
+20161107     Microsoft .NET Framework 4.6 SDK                                                                                  4.6.00081\
+20180319     IntelliTraceProfilerProxy                                                                                         15.0.17289.01\
+20161107     Microsoft Visual Studio 2015 Diagnostic Tools - amd64                                                             14.0.23107\
+20170912     Microsoft Visual Studio Tools for Applications 2015 x64 Hosting Support                                           14.0.23829\
+20170117     SkypeT 7.31                                                                                                      7.31.104\
+20161107     Visual C++ IDE Optional Desktop Support Package                                                                   14.0.23107\
+20161130     SQL Server 2016 DMF                                                                                               13.0.1601.5\
+20170928     WinRT Intellisense UAP - en-us                                                                                    10.1.14393.795\
+20170928     Microsoft SQL Server 2012 Command Line Utilities                                                                  11.3.6020.0\
+20161107     Microsoft Visual C++ 2013 Core Libraries                                                                          12.0.21005\
+20180323     SQL Server 2017 Database Engine Services                                                                          14.0.1000.169\
+20170912     SQL Server 2017 RC1 Management Studio Extensions                                                                  14.0.800.90\
+20161107     Microsoft Office Developer Tools for Visual Studio ENU Language Pack                                              14.0.23025\
+20161107     Visual C++ IDE Debugger Resource Package                                                                          14.0.25420\
+20161107     Microsoft Agents for Visual Studio 2015 Preview                                                                   14.0.23102\
+20161107     Visual C++ Compiler/Tools Premium X64 Native Package                                                              14.0.24210\
+20161107     Visual C++ Compiler/Tools Premium X64 X86 Cross Package                                                           14.0.24210\
+20161107     Microsoft Visual Studio Team Foundation Server 2015 Update 3 CTP1 Office Integration (x64)                        14.98.25331\
+20180129     SDK ARM Additions                                                                                                 10.1.16299.15\
+20170928     Microsoft .NET Core 1.1.1 - Host (x64)                                                                            4.16.1374\
+20180129     WinRT Intellisense Desktop - en-us                                                                                10.1.16299.15\
+20161107     Visual C++ Library CRT X86 Store Package                                                                          14.0.24210\
+20180129     Windows SDK for Windows Store Managed Apps Libs                                                                   10.1.16299.15\
+20180319     Microsoft System CLR Types for SQL Server 2017                                                                    14.0.3006.16\
+20161108     Intel\'ae RealSenseT SDK 2014 Runtime  (x64): Core                                                                  3.1.0.25181\
+20161107     Microsoft Expression Blend SDK for .NET 4                                                                         2.0.20525.0\
+20170928     Universal General MIDI DLS Extension SDK                                                                          10.1.14393.795\
+20161107     Microsoft .NET Framework 4.6 Targeting Pack                                                                       4.6.00081\
+20170928     Microsoft NetStandard SDK                                                                                         15.0.51105\
+20180129     Windows IoT Extension SDK Contracts                                                                               10.1.16299.15\
+20161107     Microsoft Visual Studio Tools for Apache Cordova                                                                  14.0.60527.5\
+20161107     Type Tools for Microsoft Visual Studio 2015                                                                 1.8.36.0\
+20161107     Visual C++ Compiler/Tools Premium X64 Base Package                                                                14.0.24210\
+20171013     Windows App Certification Kit Native Components                                                                   10.1.16299.15\
+20170928     Microsoft .NET Framework 4.6.2 Targeting Pack                                                                     4.6.01586\
+20161107     Roslyn Language Services - x86                                                                                    14.0.23107\
+20161107     Windows IoT Extension SDK                                                                                         10.0.26624\
+20180129     Microsoft .NET Framework Cumulative Intellisense Pack for Visual Studio (ENU)                                     4.7.02558\
+20180129     Microsoft .NET Core Runtime - 2.0.5 (x64)                                                                         16.20.26021\
+20180319     vs_filehandler_x86                                                                                                15.6.27406\
+20161107     Microsoft Visual C++  x64-x86 Cross Compilers                                                                     12.0.21005\
+20161107     Microsoft Visual C++ 2013 x64 Debug Runtime - 12.0.21005                                                          12.0.21005\
+20161107     Visual C++ Compiler/Tools Premium X86 Native Resource Package                                                     14.0.24210\
+20161107     Visual C++ Library CRT X64 Redist Package                                                                         14.0.24210\
+20171013     Universal CRT Tools x86                                                                                           10.1.16299.15\
+20180323     SQL Server 2017 Integration Services                                                                              14.0.1000.169\
+20180319     Microsoft .NET Core Runtime - 2.0.6 (x64)                                                                         16.24.26212\
+20180129     Microsoft .NET Core Host FX Resolver - 2.0.5 (x64)                                                                16.20.26021\
+20180319     Microsoft Web Deploy 4.0                                                                                          10.0.1988\
+20161107     Visual C++ Professional Items Resource Package                                                                    14.0.23107\
+20161107     Visual C++ Compiler/Tools Premium X86 X64 Cross Package                                                           14.0.24210\
+20161107     Microsoft Blend for Visual Studio 2015                                                                            14.0.25420\
+20161107     Visual C++ Compiler/Tools X86 Base Resource Package                                                               14.0.24210\
+20161107     IDE Tools for Windows 10                                                                                          14.0.25527\
+20161108     Microsoft SQL Server Compact 3.5 SP2 Query Tools ENU                                                              3.5.8080.0\
+20180323     SQL Server 2017 Integration Services Worker Agent                                                                 14.0.1000.169\
+20180319     Microsoft .NET Core Host - 2.0.6 (x64)                                                                            16.24.26212\
+20171205     Microsoft Visual C++ 2017 x86 Minimum Runtime - 14.11.25325                                                       14.11.25325\
+20161107     Microsoft Visual C++ 2012 x86 Additional Runtime - 11.0.60610                                                     11.0.60610\
+20161107     Microsoft Visual Studio Professional 2015 - ENU                                                                   14.0.23107\
+20171013     Windows IP Over USB                                                                                               10.1.16299.15\
+20161107     Visual C++ MSBuild Base Resource Package                                                                          14.0.25420\
+20171115     Microsoft .NET Core Host FX Resolver - 2.0.3 (x64)                                                                16.12.25816\
+20161107     Visual C++ Library ATL ARM Package                                                                                14.0.23026\
+20180319     IntelliTraceProfilerProxy                                                                                         15.0.17289.01\
+20161118     HP LaserJet Professional M1210 MFP Series Fax Installer                                                           1.3.0\
+20161107     Microsoft Visual C++ 2012 Compilers For Windows Phone                                                             11.0.60610\
+20180323     SQL Server 2017 sql_shared_mpy                                                                                    14.0.1000.169\
+20161107     Windows Espc Resource Package                                                                                     14.0.23107\
+20161107     Microsoft Visual C++ 2012 Compilers                                                                               11.0.60610\
+20180319     Visual F# 10.1 SDK                                                                                                10.1\
+20161107     Visual C++ Library PGO ARM Package                                                                                14.0.24210\
+20180129     Windows SDK Desktop Libs arm                                                                                      10.1.16299.15\
+20180129     Windows SDK Desktop Libs arm64                                                                                    10.1.16299.15\
+20161107     WCF RIA Services V1.0 SP2                                                                                         4.1.62812.0\
+20161107     Microsoft .NET Framework 4 Multi-Targeting Pack                                                                   4.0.30319\
+20161130     SQL Server 2016 Common Files                                                                                      13.1.4001.0\
+20161108     Lantronix CPR 4.3.0.3 (x64)                                                                                       43.00.3500\
+20161108     SQL Server 2008 R2 Database Engine Services                                                                       10.50.1600.1\
+20161130     Microsoft SQL Server 2016 T-SQL Dom                                                                         13.1.4001.0\
+20170928     Application Verifier x64 External Package                                                                         10.1.14393.795\
+20161107     Microsoft Visual Studio 2015 Update 3 Diagnostic Tools - ENU                                                      14.0.25527\
+20161118     Scan To                                                                                                           2.0.1\
+20161107     Visual C++ Compiler/Tools X86 ARM Cross Package                                                                   14.0.24210\
+20161107     Microsoft System CLR Types for SQL Server 2014                                                                    12.0.2402.11\
+20180323     SQL Server 2017 Full text search                                                                                  14.0.1000.169\
+20161118     Microsoft Visual C++ 2005 Redistributable (x64)                                                                   8.0.50727.42\
+20161107     Visual C++ IDE Core Professional Plus Resource Package                                                            14.0.25420\
+20161107     Microsoft Visual Studio 2015 SDK Language Pack - ENU                                                              14.0.25407\
+20180129     Windows Desktop Extension SDK                                                                                     10.1.16299.15\
+20180129     Windows SDK Desktop Libs x86                                                                                      10.1.16299.15\
+20161107     Windows IoT Extension SDK                                                                                         10.1.10586.212\
+20161107     Windows SDK for Windows Store Apps Contracts                                                                      10.1.10586.212\
+20180323     SQL Server 2017 Common Files                                                                                      14.0.1000.169\
+20161107     Visual C++ Compiler/Tools X86 Base Resource Package                                                               14.0.24210\
+20180323     SQL Server 2017 Analysis Services                                                                                 14.0.1000.169\
+20161107     Visual C++ Compiler/Tools X86 Native Package                                                                      14.0.24210\
+20161107     Microsoft Visual C++  x64-arm Cross Compilers - ENU Resources                                                     12.0.21005\
+20161107     Microsoft.VisualStudio.Office365                                                                                  1.6.2.0\
+20161107     Multi-Device Hybrid Apps using C# - Templates - ENU                                                               14.0.23107\
+20161104     Google Update Helper                                                                                              1.3.24.15\
+20161108     Lantronix DeviceInstaller 4.4.0.2 (x64)                                                                           44.00.2500\
+20180323     SQL Server 2017 Integration Services Master Service                                                               14.0.1000.169\
+20161107     Microsoft .NET Framework 4.5.2 Multi-Targeting Pack                                                               4.5.51651\
+20180129     Windows SDK Desktop Headers arm64                                                                                 10.1.16299.15\
+20180305     Exactus SOLAS                                                                                                     1.00.0000\
+20161107     Windows Phone 8.1 Tools for Visual Studio 2015 - ENU                                                              14.0.25527\
+20161107     Visual C++ Compiler/Tools X64 Native Package                                                                      14.0.24210\
+20161107     7-Zip 9.20 (x64 edition)                                                                                          9.20.00.0\
+20161107     Visual C++ IDE Core Professional Plus Resource Package                                                            14.0.25420\
+20161107     Microsoft System CLR Types for SQL Server 2014                                                                    12.0.2402.29\
+20171013     Microsoft .NET Core Host FX Resolver - 2.0.0 (x64)                                                                16.0.25521\
+20161107     Microsoft Visual Studio 2015 Windows Diagnostic Tools                                                             14.0.25431\
+20161107     Dotfuscator and Analytics Community Edition 5.22.0                                                                5.22.0.3788\
+20161107     Microsoft Visual Studio 2015 Devenv Resources                                                                     14.0.23107\
+20161107     Visual C++ MSBuild ARM Package                                                                                    14.0.25420\
+20180129     Windows Mobile Extension SDK                                                                                      10.1.16299.15\
+20161108     SQL Server 2008 R2 Management Studio                                                                              10.50.1600.1\
+                                                                                                                        \
+20161107     Microsoft Visual Studio 2015 Preparation                                                                          14.0.23107\
+20161107     Microsoft Visual C++ 2012 32bit Compilers - ENU Resources                                                         11.0.60610\
+20170928     Windows Team Extension SDK                                                                                        10.1.14393.795\
+20161107     Universal CRT Extension SDK                                                                                       10.1.10586.212\
+20170912     Microsoft Analysis Services OLE DB Provider                                                                       14.0.800.90\
+20180319     icecap_collectionresources                                                                                        15.6.27406\
+20161107     Microsoft Visual Studio Services Hub                                                                              1.0.25420.01\
+20180322     Microsoft VSS Writer for SQL Server 2017                                                                          14.0.1000.169\
+20161107     Microsoft .NET Framework 4.6.1 Targeting Pack                                                                     4.6.01055\
+20170928     Universal CRT Headers Libraries and Sources                                                                       10.1.14393.795\
+20171218     EPSON APD4 Point and Print Support                                                                                4.56.0400\
+20161107     Microsoft .NET Framework 4.6 Targeting Pack (ENU)                                                                 4.6.00127\
+20161107     Windows SDK EULA                                                                                                  10.0.26624\
+20161107     Visual C++ Compiler/Tools X86 Base Package                                                                        14.0.24210\
+20161107     Microsoft Visual C++ 2013 32bit Compilers - ENU Resources                                                         12.0.21005\
+20161107     Visual C++ IDE Core Professional Plus Resource Package                                                            14.0.25420\
+20161107     WinRT Intellisense Xbox Live Extension SDK - en-us                                                                10.1.10586.212\
+20171013     Microsoft Azure Compute Emulator - v2.9.5.3                                                                       2.9.8699.20\
+20180129     Windows Team Extension SDK                                                                                        10.1.16299.15\
+20161107     Windows SDK Desktop Headers Libs Metadata                                                                         10.1.10586.212\
+20161107     Microsoft Visual Studio 2015 XAML Visual Diagnostics for Windows Store                                            14.0.25527\
+20171115     Google Update Helper                                                                                              1.3.33.7\
+20161107     Team Explorer for Microsoft Visual Studio 2015 Update 3.1                                                         14.102.25619\
+20180323     SQL Server 2017 Shared Management Objects                                                                         14.0.1000.169\
+20161130     Microsoft SQL Server 2016 LocalDB                                                                                 13.1.4001.0\
+20161107     Microsoft Azure Storage Connected Service                                                                         14.0.25420\
+20170928     Windows SDK Desktop Headers Libs Metadata                                                                         10.1.14393.795\
+20161107     Windows 8 Development Essentials                                                                                  12.0.21005\
+20161107     Microsoft Visual C++ 2012 Core Libraries                                                                          11.0.51106\
+20161107     Visual C++ Compiler/Tools X86 X64 Cross Package                                                                   14.0.24210\
+20170928     Microsoft .NET Native SDK                                                                                         15.0.24211\
+20161107     Windows 8 Development Essentials                                                                                  14.0.23107\
+20161107     Microsoft Azure Mobile Services SDK V2.0                                                                          2.0.20908.0\
+20161107     Microsoft Visual Studio 2015 Preparation                                                                          14.0.23107\
+20180129     WinRT Intellisense UAP - en-us                                                                                    10.1.16299.15\
+20161107     Windows Software Development Kit for Windows Store Apps DirectX x64 Remote                                        8.100.26936\
+20161107     Visual C++ Library CRT X86 Desktop Package                                                                        14.0.24210\
+20180406     Microsoft .NET Core SDK - 2.1.104 (x64)                                                                           8.26.7469\
+20180426     Microsoft ReportViewer 2010 SP1 Redistributable                                                                   10.0.40219\
+20180319     Microsoft System CLR Types for SQL Server 2017                                                                    14.0.3006.16\
+20180323     SQL Server 2017 sql_shared_aa                                                                                     14.0.1000.169\
+20170502     Adobe Help Manager                                                                                                4.0.244\
+20180129     Windows SDK Desktop Tools x86                                                                                     10.1.16299.15\
+20180323     SQL Server 2017 Data quality client                                                                               14.0.1000.169\
+20161107     Visual C++ IDE Professional Plus Resource Package                                                                 14.0.25420\
+20170912     Microsoft SQL Server 2017 Policies RC1                                                                            14.0.800.90\
+20161107     Microsoft Visual Studio 2015 Update 3 Diagnostic Tools - amd64                                                    14.0.25431\
+20161107     Visual C++ Professional Windows UAP Templates Resource Package                                                    14.0.25527\
+20161107     Microsoft LightSwitch for Visual Studio 2015 v5.0 Tools                                                           14.0.23025\
+20161107     Microsoft SQL Server 2014 T-SQL Language Service                                                                  12.0.2000.8\
+20171115     Microsoft .NET Core Runtime - 2.0.3 (x64)                                                                         16.12.25816\
+20171013     Microsoft .NET Core SDK - 2.0.2 (x64)                                                                             8.0.39737\
+20161130     Sql Server Customer Experience Improvement Program                                                                13.1.4001.0\
+20171013     Microsoft .NET Core Runtime - 2.0.0 (x64)                                                                         16.0.25521\
+20161107     Microsoft Visual C++ 2012 Core Libraries                                                                          11.0.51106\
+20170912     SQL Server Management Studio                                                                                      14.0.17177.0\
+20161107     Visual C++ Library CRT ARM OneCore For Desktop Package                                                            14.0.24210\
+20161107     Microsoft Visual Studio 2015 XAML Application Timeline                                                            14.0.25431\
+20161107     Microsoft Visual C++ 2013 Core Libraries                                                                          12.0.21005\
+20161107     Microsoft Visual Studio 2015 VsGraphics Helper Dependencies                                                       14.0.23107\
+20161107     Microsoft SQL Server 2016 Management Objects  (x64)                                                               13.0.1601.5\
+20161107     Microsoft System CLR Types for SQL Server 2014                                                                    12.0.2402.29\
+20170928     Windows SDK for Windows Store Apps Contracts                                                                      10.1.14393.795\
+20161107     Visual C++ IDE Core Professional Plus Resource Package                                                            14.0.25420\
+20161107     Microsoft SQL Server 2014 Express LocalDB                                                                         12.0.2000.8\
+20161107     Visual C++ Library ATL X86 Package                                                                                14.0.23026\
+20180319     Microsoft TestPlatform SDK Local Feed                                                                             15.6.0.1398059\
+20171013     Microsoft Portable Library Multi-Targeting Pack Language Pack - enu                                               15.0.26621.02\
+20161108     EZ Label Xpress Lite                                                                                              1.00.0000\
+20161107     Microsoft System CLR Types for SQL Server 2016                                                                    13.0.1601.5\
+20161107     Visual C++ IDE Windows Express Plus Package                                                                       14.0.23107\
+20171013     Windows Simulator - ENU                                                                                           15.0.26621\
+20170928     WinRT Intellisense IoT - en-us                                                                                    10.1.14393.795\
+20161107     Microsoft Visual C++ 2012 Compilers - ENU Resources                                                               11.0.60610\
+20161107     Visual C++ IDE Professional Plus Package                                                                          14.0.25420\
+20161107     Windows SDK for Windows Store Apps Contracts                                                                      10.0.26624\
+20170912     Microsoft Visual Studio Tools for Applications 2015 Language Support - ENU Language Pack                          14.0.23107.20\
+20171013     vs_professionalmsi                                                                                                15.0.26621\
+20161107     WinRT Intellisense Xbox Live Extension SDK - Other Languages                                                      10.1.10586.212\
+20161104     Intel(R) ME UninstallLegacy                                                                                       1.0.1.0\
+20171205     Microsoft ASP.NET Web Pages 2 Runtime                                                                             2.0.20716.0\
+20161107     Windows Software Development Kit for Windows Store Apps                                                           8.59.29989\
+20161107     Microsoft Visual Studio 2015 Add-in for Windows Phone                                                             14.0.23107\
+20161107     Visual C++ Compiler/Tools X64 X86 Cross Resource Package                                                          14.0.24210\
+20161107     Windows 8 Development Essentials                                                                                  14.0.23107\
+20161107     Microsoft Visual Studio 2015 Update 3 Diagnostic Tools - x86                                                      14.0.25431\
+20161107     Windows Mobile Connectivity Tools 10.0.10586.0 - Desktop x86                                                      10.1.10586.212\
+20161107     Universal CRT Headers Libraries and Sources                                                                       10.1.10586.212\
+20161107     Visual C++ Library CRT ARM Desktop Package                                                                        14.0.24210\
+20180129     Windows SDK Modern Non-Versioned Developer Tools                                                                  10.1.16299.15\
+20161107     Windows Phone 8.1 Tools for Visual Studio Professional 2015                                                       14.0.25527\
+20171013     Microsoft Azure Authoring Tools - v2.9.5.3                                                                        2.9.8699.20\
+20161107     Microsoft .NET Native SDK                                                                                         1.0.24208\
+20161107     Microsoft Help Viewer 2.2                                                                                         2.2.25420\
+20180319     Visual C++ Library CRT Desktop Appx Package                                                                       14.13.26128\
+20180129     Windows SDK for Windows Store Apps Headers                                                                        10.1.16299.15\
+20161108     Microsoft Report Viewer Redistributable 2008 (KB971119)                                                           9.0.30731\
+20161107     Visual C++ Compiler/Tools X64 Native Resource Package                                                             14.0.24210\
+20161107     Visual C++ IDE Base Resource Package                                                                              14.0.25420\
+20180129     Windows SDK Desktop Libs x64                                                                                      10.1.16299.15\
+20180323     SQL Server 2017 sql_inst_mpy                                                                                      14.0.1000.169\
+20161107     Microsoft Visual C++ 2012 Compilers For Windows Phone - ENU Resources                                             11.0.60610\
+20180319     DiagnosticsHub_CollectionService                                                                                  15.6.27309\
+20161107     Microsoft Visual C++ 2012 x86-x64 Compilers                                                                       11.0.60610\
+20170928     Microsoft .NET Core 1.0.4 - Runtime (x64)                                                                         1.0.4\
+20161107     Visual C++ Compiler/Tools Premium X64 ARM Cross Package                                                           14.0.24210\
+20161130     SQL Server 2016 Shared Management Objects Extensions                                                              13.0.1601.5\
+20161107     Microsoft Advertising SDK for Windows Phone - ENU                                                                 6.2.960.0\
+20161130     SQL Server 2016 Batch Parser                                                                                      13.0.1601.5\
+20161107     Microsoft Visual Studio 2015 XAML Designer - ENU                                                                  14.0.25420\
+20180418     Sandcastle Help File Builder                                                                                      17.12.31.0\
+20180319     Microsoft .NET CoreRuntime SDK                                                                                    1.1.25915.0\
+20161104     Intel(R) Chipset Device Software                                                                                  10.1.1.7\
+20161130     SQL Server 2016 Shared Management Objects Extensions                                                              13.0.1601.5\
+20171013     vs_devenvmsi                                                                                                      15.0.26621\
+20161107     Entity Framework 6.1.3 Tools  for Visual Studio 2015 Update 1                                                     14.0.41103.0\
+20170928     Microsoft .NET Core 1.1.1 - Runtime (x64)                                                                         1.1.1\
+20161107     Windows Team Extension SDK Contracts                                                                              10.0.26624\
+20161107     Visual Studio 2015 Prerequisites                                                                                  14.0.23107\
+20180129     WinAppDeploy                                                                                                      10.1.16299.15\
+20161107     Microsoft Visual C++  x64-arm Cross Compilers                                                                     12.0.21005\
+20170502     Microsoft Visual C++ 2005 Redistributable                                                                         8.0.61001\
+20161107     Visual C++ Professional Items Package                                                                             14.0.23107\
+20171013     Universal CRT Redistributable                                                                                     10.1.16299.15\
+20161108     Microsoft SQL Server 2008 R2 Setup (English)                                                                      10.50.1600.1\
+20170118     Crystal Reports 10                                                                                                10.0.0.53327\
+20171122     Oracle VM VirtualBox 5.2.0                                                                                        5.2.0\
+20180319     Visual C++ Library CRT Desktop Appx Package                                                                       14.13.26128\
+20161107     Visual C++ Library CRT Redist Resource Package                                                                    14.0.24215\
+20161107     Visual C++ CRT Headers Package                                                                                    14.0.24210\
+20161107     Microsoft ASP.NET Web Frameworks and Tools - Visual Studio 2015 - ENU                                             5.2.40314.0\
+20180129     Windows SDK for Windows Store Apps Tools                                                                          10.1.16299.15\
+20180323     SQL Server 2017 XEvent                                                                                            14.0.1000.169\
+20180129     SDK ARM Redistributables                                                                                          10.1.16299.15\
+20180129     Windows Team Extension SDK Contracts                                                                              10.1.16299.15\
+20161107     Universal General MIDI DLS Extension SDK                                                                          10.0.26624\
+20161107     Windows Phone 8.1 Tools for Visual Studio 2013                                                                    12.0.40629\
+20161107     Microsoft Visual Studio 2015 Shell (Minimum) Interop Assemblies                                                   14.0.25420\
+20180319     Visual C++ Library CRT Appx Package                                                                               14.13.26128\
+20161107     Microsoft Build Tools Language Resources 14.0 (amd64)                                                             14.0.25420\
+20161107     Microsoft Visual Studio 2015 Update 3 Diagnostic Tools - x86                                                      14.0.25527\
+20161107     Windows Espc Package                                                                                              14.0.23107\
+20161107     Microsoft Visual Studio 2015 Update 3 Diagnostic Tools - amd64                                                    14.0.25420\
+20161108     SQL Server 2008 R2 Database Engine Shared                                                                         10.50.1600.1\
+20170928     Windows SDK for Windows Store Apps Tools                                                                          10.1.14393.795\
+20170928     Microsoft .NET Core 1.1.1 - Host FX Resolver (x64)                                                                4.16.1374\
+20180129     Windows SDK Facade Windows WinMD Versioned                                                                        10.1.16299.15\
+20161107     Visual C++ Library ATL Source Package                                                                             14.0.23026\
+20161107     Build Tools for Windows 10 - ENU                                                                                  14.0.25527\
+20180129     Windows SDK Signing Tools                                                                                         10.1.16299.15\
+20161107     Microsoft Azure Shared Components for Visual Studio 2015 - v1.8                                                   1.8.40521.1\
+20161107     Build Tools Language Resources - x86                                                                              12.0.31010\
+20161130     Microsoft SQL Server 2016 Setup (English)                                                                         13.1.4001.0\
+20170912     SQL Server 2017 RC1 Common Files                                                                                  14.0.800.90\
+20161107     Microsoft Office Developer Tools for Microsoft Visual Studio (x64) - ENU Language Pack                            14.0.23025\
+20171013     Microsoft Portable Library Multi-Targeting Pack                                                                   15.0.26621.02\
+20161107     Microsoft LightSwitch for Visual Studio 2015 CoreRes - ENU                                                        14.0.23025\
+20180322     Microsoft SQL Server 2017 Setup (English)                                                                         14.0.1000.169\
+20170620     Microsoft Visual Studio Tools for Applications 2.0 - ENU                                                          9.0.35191\
+20161107     Microsoft Visual Studio 2015 XAML Application Timeline - ENU                                                      14.0.25420\
+20170502     Microsoft Visual C++ 2008 Redistributable - x86 9.0.30729.4148                                                    9.0.30729.4148\
+20161104     Intel(R) Rapid Storage Technology                                                                                 14.5.0.1081\
+20170912     SQL Server 2017 RC1 Integration Services Scale Out Management Portal                                              14.0.800.77\
+20161107     Visual C++ IDE Core Professional Plus Resource Package                                                            14.0.25420\
+20161108     SQL Server 2008 R2 Common Files                                                                                   10.50.1600.1\
+20161107     Visual C++ Library PGO X86 Package                                                                                14.0.24210\
+20161107     Visual C++ Compiler/Tools Premium X64 ARM Cross Resource Package                                                  14.0.24210\
+20161107     Microsoft Visual C++ 2008 Redistributable - x86 9.0.30729.17                                                      9.0.30729\
+20161108     Microsoft SQL Server Compact 3.5 SP2 ENU                                                                          3.5.8080.0\
+20161107     Windows IoT Extension SDK Contracts                                                                               10.1.10586.212\
+20180319     Visual C++ Library CRT Appx Package                                                                               14.13.26128\
+20161107     Microsoft Exchange Web Services Managed API 2.1                                                                   15.0.847.30\
+20161118     HP LaserJet Toolbox                                                                                               3.0.0\
+20180129     vs_tipsmsi                                                                                                        15.0.27005\
+20180323     SQL Server 2017 Client Tools Extensions                                                                           14.0.1000.169\
+20161107     Microsoft .NET Framework 4.5.1 SDK                                                                                4.5.51641\
+20170928     Windows Mobile Extension SDK 10.0.14393.0 - x86                                                                   10.1.14393.795\
+20161107     Windows Team Extension SDK                                                                                        10.1.10586.212\
+20180319     Microsoft ASP.NET Core 2.0.6 Runtime Package Store (x64)                                                          2.0.12620.0\
+20170620     Microsoft Silverlight                                                                                             5.1.50907.0\
+20161107     Microsoft Build Tools 14.0 (x86)                                                                                  14.0.25420\
+20161107     Visual C++ IDE Core Professional Plus Resource Package                                                            14.0.25420\
+20180323     SQL Server 2017 XEvent                                                                                            14.0.1000.169\
+20180129     Windows SDK EULA                                                                                                  10.1.16299.15\
+20171013     vs_minshellmsires                                                                                                 15.0.26621\
+20180129     VS  Debugging Common                                                                                        16.0.76.0\
+20170928     WinRT Intellisense PPI - Other Languages                                                                          10.1.14393.795\
+20180129     Windows SDK for Windows Store Apps Metadata                                                                       10.1.16299.15\
+20180319     Windows Phone SDK 8.0 Assemblies for Visual Studio 2017                                                           15.0.27309\
+20161107     Microsoft Visual C++ 2012 x64 Debug Runtime - 11.0.60610                                                          11.0.60610\
+20161107     Windows Phone 8.0 Managed SDK Profiler (ARM)                                                                      11.0.50727\
+20180326     Microsoft .NET Core SDK - 2.1.103 (x64)                                                                           8.25.56606\
+20161130     SQL Server 2016 Database Engine Services                                                                          13.1.4001.0\
+20180129     Windows SDK for Windows Store Apps Contracts                                                                      10.1.16299.15\
+20180319     windows_toolscorepkg                                                                                              15.6.27421\
+20170912     Microsoft Visual Studio Tools for Applications 2015 Finalizer                                                     14.0.23829\
+20161107     WCF Data Services 5.6.4 Runtime                                                                                   5.6.62175.4\
+20161107     Visual C++ IDE Core Professional Plus Resource Package                                                            14.0.25420\
+20180129     Windows SDK Redistributables                                                                                      10.1.16299.15\
+20180129     Windows SDK DirectX x86 Remote                                                                                    10.1.16299.15\
+20170928     WinRT Intellisense UAP - Other Languages                                                                          10.1.14393.795\
+20161130     Microsoft SQL Server 2016 T-SQL Language Service                                                                  13.0.14500.10\
+20180129     vs_SQLClickOnceBootstrappermsi                                                                                    15.0.27005\
+20161107     PreEmptive Analytics Visual Studio Components                                                                     1.2.5134.1\
+20161107     Visual C++ IDE Base Resource Package                                                                              14.0.25420\
+20180129     Application Verifier x64 External Package                                                                         10.1.16299.15\
+20170928     Universal CRT Extension SDK                                                                                       10.1.14393.795\
+20161107     Microsoft LightSwitch v5.0 SDK                                                                                    14.0.23025\
+20161107     Windows Desktop Extension SDK Contracts                                                                           10.1.10586.212\
+20180129     Windows SDK for Windows Store Apps DirectX x64 Remote                                                             10.1.16299.15\
+20161107     Microsoft Visual C++ 2013 Compilers - ENU Resources                                                               12.0.21005\
+20161107     Application Insights Tools for Visual Studio 2015                                                                 7.0.20622.1\
+20171013     Type Power Tool                                                                                             2.1.7.0\
+20180323     SQL Server 2017 Database Engine Shared                                                                            14.0.1000.169\
+20161107     Microsoft Visual C++ 2015 x86 Debug Runtime - 14.0.24215                                                          14.0.24215\
+20170912     Microsoft Visual Studio 2015 Shell (Isolated)                                                                     14.0.23107\
+20180129     WinRT Intellisense PPI - Other Languages                                                                          10.1.16299.15\
+20170912     Microsoft Visual Studio Tools for Applications 2015 x86 Hosting Support                                           14.0.23829\
+20180319     Microsoft UniversalWindowsPlatform SDK                                                                            15.6.2\
+20161107     Visual C++ Compiler/Tools Premium ARM Base Package                                                                14.0.24210\
+20180323     SQL Server 2017 Integration Services                                                                              14.0.1000.169\
+20161130     SQL Server 2016 SQL Diagnostics                                                                                   13.0.1601.5\
+20161107     Visual C++ Professional Templates Package                                                                         14.0.25420\
+20161107     Build Tools Language Resources - amd64                                                                            12.0.31010\
+20161107     Windows Software Development Kit DirectX x64 Remote                                                               8.100.25984\
+20161107     Behaviors SDK (Windows Phone) for Visual Studio 2013                                                              12.0.51210.80\
+20171205     Microsoft Visual C++ 2017 x86 Additional Runtime - 14.11.25325                                                    14.11.25325\
+20170928     Entity Framework 6.1.3 Tools  for Visual Studio 15                                                                6.1.60104.0\
+20161107     Visual C++ Library CRT X64 Desktop Package                                                                        14.0.24210\
+20161107     Windows SDK for Windows Store Apps Headers Libs                                                                   10.0.26624\
+20161107     WCF Data Services Tools for Microsoft Visual Studio 2015                                                          5.6.62175.4\
+20161107     Microsoft Visual Studio 2015 Update 3.1 Team Explorer Language Pack - ENU                                         14.102.25619\
+20161130     SQL Server 2016 XEvent                                                                                            13.0.1601.5\
+20180323     SQL Server 2017 sql_shared_mr                                                                                     14.0.1000.169\
+20171013     Universal CRT Tools x64                                                                                           10.1.16299.15\
+20161107     Windows Phone SDK 8.0 Assemblies                                                                                  11.0.60610\
+20180323     SQL Server 2017 SQL Data Quality Common                                                                           14.0.1000.169\
+20180322     Exactus v17                                                                                                       17.0.0\
+20161107     Visual C++ IDE Debugger Package                                                                                   14.0.25431\
+20161107     Microsoft Visual Studio Team Foundation Server 2015 Update 3 CTP1 Storyboarding Language Pack (x64) - ENU         14.98.25331\
+20180129     WinRT Intellisense PPI - en-us                                                                                    10.1.16299.15\
+20180129     Microsoft ASP.NET Core Module for IIS Express                                                                     1.0.1985\
+20180129     Windows SDK for Windows Store Apps DirectX x86 Remote                                                             10.1.16299.15\
+20161107     Visual C++ Compiler/Tools X64 X86 Cross Package                                                                   14.0.24210\
+20170928     Windows SDK for Windows Store Apps Headers Libs                                                                   10.1.14393.795\
+20180323     SQL Server 2017 Data quality service                                                                              14.0.1000.169\
+20161107     Microsoft Visual Studio 2015 Test Tools Language Pack - ENU                                                       14.0.23107\
+20161107     Microsoft .NET Framework 4.6.1 Targeting Pack (ENU)                                                               4.6.01055\
+20161107     Build Tools - amd64                                                                                               12.0.31010\
+20161107     Windows Mobile Extension SDK 10.0.10586.0 - x86                                                                   10.1.10586.212\
+20161130     SQL Server 2016 DMF                                                                                               13.0.1601.5\
+20161108     SQL Server 2008 R2 Common Files                                                                                   10.50.1600.1\
+20161107     Microsoft Visual Studio 2015 SDK - ENU                                                                            14.0.25407\
+20161107     CodedUITestUAP                                                                                                    14.0.25527\
+20180129     Microsoft .NET Core SDK - 2.1.4 (x64)                                                                             8.17.7260\
+20170214     Microsoft Visual C++ 2008 Redistributable - x64 9.0.30729.17                                                      9.0.30729\
+20170912     Microsoft Visual Studio Tools for Applications 2015 Language Support                                              14.0.23107.20\
+20180319     vs_BlendMsi                                                                                                       15.0.27205\
+20161107     Visual Studio Graphics Analyzer                                                                                   14.0.25420\
+20161107     Microsoft SQL Server 2016 Management Objects                                                                      13.0.1601.5\
+20161107     Windows Phone SDK 8.0 Assemblies for Visual Studio 2015                                                           14.0.25527\
+20161108     Microsoft SQL Server 2008 R2 Native Client                                                                        10.50.1600.1\
+20161107     Windows SDK EULA                                                                                                  10.1.10586.212\
+20180323     SQL Server 2017 Connection Info                                                                                   14.0.1000.169\
+20180323     SQL Server 2017 Integration Services Worker Agent                                                                 14.0.1000.169\
+20170928     Windows Desktop Extension SDK                                                                                     10.1.14393.795\
+20161130     SQL Server 2016 Common Files                                                                                      13.1.4001.0\
+20161107     Microsoft SQL Server 2014 Management Objects                                                                      12.0.2000.8\
+20180319     vs_filehandler_amd64                                                                                              15.6.27406\
+20161107     Windows Phone 8.1 Tools for Visual Studio Professional 2015 - ENU                                                 14.0.23107\
+20161107     Microsoft Visual Studio 2015 Preparation                                                                          14.0.23107\
+20180129     Microsoft Windows Communication Foundation Diagnostic Pack for x86                                                15.0.27005\
+20161107     Blend for Visual Studio SDK for Silverlight 5                                                                     3.0.40218.0\
+20161108     SQL Server 2008 R2 Management Studio                                                                              10.50.1600.1\
+20161107     Visual C++ IDE Base Package                                                                                       14.0.25431\
+20161107     Microsoft Visual Studio 2015 Profiling Tools                                                                      14.0.25123\
+20180323     SQL Server 2017 Analysis Services                                                                                 14.0.1000.169\
+20170912     Microsoft Visual Studio Tools for Applications 2015 Design-Time                                                   14.0.23829\
+20180323     SQL Server 2017 Database Engine Services                                                                          14.0.1000.169\
+20171013     Kits Configuration Installer                                                                                      10.1.16299.15\
+20180323     Microsoft SQL Server 2017 RsFx Driver                                                                             14.0.1000.169\
+20180129     WinRT Intellisense IoT - en-us                                                                                    10.1.16299.15\
+20161107     Microsoft Office Developer Tools for Visual Studio                                                                14.0.23025\
+20161130     SQL Server 2016 XEvent                                                                                            13.0.1601.5\
+20161107     Microsoft Visual C++  x64 Native Compilers                                                                        12.0.21005\
+20161107     Microsoft Identity Extensions                                                                                     2.0.1459.0\
+20161107     Microsoft Azure Mobile Services Connected Service                                                                 14.0.25420\
+20180323     SQL Server 2017 DMF                                                                                               14.0.1000.169\
+20161108     Sql Server Customer Experience Improvement Program                                                                10.50.1600.1\
+20180323     SQL Server 2017 Integration Services Master Service                                                               14.0.1000.169\
+20161107     Microsoft SQL Server Data Tools - enu (14.0.60519.0)                                                              14.0.60519.0\
+20161107     Visual C++ Compiler/Tools X86 X64 Cross Resource Package                                                          14.0.24210\
+20161107     Microsoft Agents for Visual Studio 2015 Preview - ENU                                                             14.0.23102\
+20161107     Visual C++ Library CRT Source Package                                                                             14.0.24210\
+20161107     Visual C++ Professional Windows 8.1 Templates Resource Package                                                    14.0.23107\
+20170912     Microsoft SQL Server 2012 Native Client                                                                           11.3.6540.0\
+\
+\
+C:\\Users\\ID>\
+\
+\
+}
